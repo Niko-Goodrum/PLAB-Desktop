@@ -1,5 +1,8 @@
 <template>
-  <main>
-    <h2>Hello, World!</h2>
-  </main>
+    <router-view />
 </template>
+
+<style scoped lang="scss">
+  @use "@/design/global";
+  @use "@/design/page.style";
+</style>

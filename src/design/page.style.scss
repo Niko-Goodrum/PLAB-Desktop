@@ -1,4 +1,4 @@
-@use "src/design/function/flex" as *;
+@use "@/design/function/flex" as *;
 
 .main {
   @include flex-column;
