@@ -39,3 +39,41 @@ html[data-theme="light"] {
   --Static-Black: #{$Common-100};
 }
 
+html[data-theme="dark"] {
+  --Primary-Normal: #A29BFE;
+  --Primary-Alternative: #C2BDFE;
+  --Primary-Assistive: #D8D5FD;
+
+  --Secondary-Normal: #FFB6C1;
+  --Secondary-Alternative: #FECFD6;
+  --Secondary-Assistive: #FDE0E5;
+
+  --Label-Normal: #{$Neutral-99};
+  --Label-Strong: #{$Common-00};
+  --Label-Neutral: #{$Neutral-95};
+  --Label-Alternative: #{$Neutral-90};
+  --Label-Assistive: #{$Neutral-70};
+  --Label-Disable: #{$Neutral-30};
+
+  --Line-Normal: #{$Neutral-50};
+  --Line-Neutral: #{$Neutral-30};
+  --Line-Alternative: #{$Neutral-25};
+
+  --Fill-Normal: #{$Neutral-20};
+  --Fill-Neutral: #{$Neutral-25};
+  --Fill-Alternative: #{$Neutral-30};
+  --Fill-Support: #{$Neutral-30};
+  --Fill-Assistive: #{$Neutral-60};
+
+  --Background-Normal: #{$Neutral-15};
+  --Background-Neutral: #{$Neutral-10};
+  --Background-Alternative: #{$Neutral-7};
+
+  --Status-Negative: #{$Red-50};
+  --Status-Cautionary: #{$Yellow-50};
+  --Status-Positive: #{$Green-50};
+  --Status-Info: #{$Blue-50};
+
+  --Static-White: #{$Common-00};
+  --Static-Black: #{$Common-100};
+}
