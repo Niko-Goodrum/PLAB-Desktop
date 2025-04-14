@@ -1,0 +1,13 @@
+@use "./shadow" as *;
+
+@mixin Black-1 {
+  box-shadow: #{$elevation-black-1-x} #{$elevation-black-1-y} #{$elevation-black-1-blur} #{$elevation-black-1-spread} #{$elevation-black-1-color};
+}
+
+@mixin Black-2 {
+  box-shadow: #{$elevation-black-2-x} #{$elevation-black-2-y} #{$elevation-black-2-blur} #{$elevation-black-2-spread} #{$elevation-black-2-color};
+}
+
+@mixin Black-3 {
+  box-shadow: #{$elevation-black-3-x} #{$elevation-black-3-y} #{$elevation-black-3-blur} #{$elevation-black-3-spread} #{$elevation-black-3-color};
+}
