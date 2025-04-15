@@ -1,10 +1,8 @@
 <script setup lang="ts">
-interface Props {
-  size?: number;
-  color?: string;
-}
+import { IconProps } from "@/types/icon/icon.type";
+import { themeToken } from "@/design/color/themeToken";
 
-const { size = 24, color = "var(--Static-Black)" } = defineProps<Props>();
+const { size = 24, color = "staticBlack" } = defineProps<IconProps>();
 </script>
 
 <template>
@@ -16,7 +14,7 @@ const { size = 24, color = "var(--Static-Black)" } = defineProps<Props>();
     xmlns="http://www.w3.org/2000/svg">
     <path
       d="M17 14L12 9L7 14"
-      :stroke="color"
+      :stroke="themeToken[color as keyof typeof themeToken] || color"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round" />
