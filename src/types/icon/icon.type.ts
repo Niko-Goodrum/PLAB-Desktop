@@ -1,4 +1,4 @@
-import { ThemeType } from "@/design/color/themeToken";
+import { ThemeType } from "@/design/color/themeColor";
 
 export interface IconProps {
   size?: number;

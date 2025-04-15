@@ -1,4 +1,4 @@
-export const themeToken = Object.freeze({
+export const themeColor = Object.freeze({
   primaryNormal: "var(--Primary-Normal)",
   primaryAlternative: "var(--Primary-Alternative)",
   primaryAssistive: "var(--Primary-Assistive)",
@@ -30,4 +30,4 @@ export const themeToken = Object.freeze({
   staticBlack: "var(--Static-Black)",
 });
 
-export type ThemeType = keyof typeof themeToken;
+export type ThemeType = keyof typeof themeColor;

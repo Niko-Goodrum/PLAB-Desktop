@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IconProps } from "@/types/icon/icon.type";
-import { themeToken } from "@/design/color/themeToken";
+import { themeColor } from "@/design/color/themeColor";
 
 const { size = 24, color = "staticBlack" } = defineProps<IconProps>();
 </script>
@@ -14,7 +14,7 @@ const { size = 24, color = "staticBlack" } = defineProps<IconProps>();
     xmlns="http://www.w3.org/2000/svg">
     <path
       d="M17 14L12 9L7 14"
-      :stroke="themeToken[color as keyof typeof themeToken] || color"
+      :stroke="themeColor[color as keyof typeof themeColor] || color"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round" />
