@@ -8,9 +8,9 @@ defineProps<ButtonProps>();
   <button
       :class="[
       'btn',
-      `btn--${size || 'medium'}`,
-      `btn--${color || 'primary'}`,
-      line ? 'btn--outline' : null
+      `btn--${size}`,
+      `btn--${color}`,
+      line ? 'btn--outline' : 'btn--filled'
     ]"
       @click="onClick"
   >
@@ -21,30 +21,32 @@ defineProps<ButtonProps>();
 <style scoped lang="scss">
 @use "@/design/function/flex" as *;
 @use "@/design/fonts/typography" as *;
+@use "@/design/shape/shape" as *;
 
 .btn {
+  border: none;
   @include flex-center;
   cursor: pointer;
 
-  &--extraLarge { @include HeadLine2-Bold; padding: 10px 24px; border-radius: var(--Shape-Large) };
-  &--large { @include Body-Bold; padding: 14px 20px; border-radius: var(--Shape-Medium) };
-  &--medium { @include Label-Bold; padding: 10px 16px; border-radius: var(--Shape-Small) };
-  &--small { @include Caption-Bold; padding: 8px 12px; border-radius: var(--Shape-ExtraSmall) };
+  &--ExtraLarge { @include HeadLine2-Bold; padding: 10px 24px; border-radius: var(--Shape-Large) };
+  &--Large { @include Body-Bold; padding: 14px 20px; border-radius: var(--Shape-Medium) };
+  &--Medium { @include Label-Bold; padding: 10px 16px; border-radius: var(--Shape-Small) };
+  &--Small { @include Caption-Bold; padding: 8px 12px; border-radius: var(--Shape-ExtraSmall) };
 
   &--filled {
-    &.btn--primary {
+    &.btn--Primary {
       background-color: var(--Primary-Normal);
       color: var(--Static-White);
     }
-    &.btn--alternative {
+    &.btn--Alternative {
       background-color: var(--Primary-Alternative);
       color: var(--Static-White);
     }
-    &.btn--normal {
+    &.btn--Normal {
       background-color: var(--Fill-Gray);
       color: var(--Label-Neutral);
     }
-    &.btn--white {
+    &.btn--White {
       background-color: var(--Static-White);
       color: var(--Static-Black);
     }
