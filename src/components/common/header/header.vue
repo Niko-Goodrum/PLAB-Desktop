@@ -2,7 +2,8 @@
 import Logo from "@/assets/images/Logo.svg";
 import Light from "@/assets/images/header/light.svg";
 import Dark from "@/assets/images/header/dark.svg";
-import { useThemeStore } from "@/stores/theme/theme.store";
+import {useThemeStore} from "@/stores/theme/theme.store";
+import Button from "@/components/ui/button/button.vue";
 
 const themeStore = useThemeStore();
 </script>
@@ -10,18 +11,23 @@ const themeStore = useThemeStore();
 <template>
   <header>
     <div class="logo_container">
-      <Logo />
+      <Logo/>
       <div class="menu_container">
         <span>포트폴리오</span>
         <span>면접</span>
       </div>
     </div>
-    <div class="theme_toggle" @click="themeStore.toggleTheme">
-      <div class="icon_wrapper">
-        <transition name="fade-icon" mode="out-in">
-          <Light v-if="themeStore.theme === 'light'" key="light" class="icon" />
-          <Dark v-else key="dark" class="icon" />
-        </transition>
+    <div>
+      <div>
+        <Button />
+      </div>
+      <div class="theme_toggle" @click="themeStore.toggleTheme">
+        <div class="icon_wrapper">
+          <transition name="fade-icon" mode="out-in">
+            <Light v-if="themeStore.theme === 'light'" key="light" class="icon"/>
+            <Dark v-else key="dark" class="icon"/>
+          </transition>
+        </div>
       </div>
     </div>
   </header>

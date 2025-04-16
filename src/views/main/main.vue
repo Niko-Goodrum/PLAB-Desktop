@@ -77,7 +77,7 @@ import Business from "@/assets/images/main/business.vue";
 
   .b_sub {
     @include Label-Medium;
-    color: var(--Label-Assistive);
+    color: var(--Static-White);
   }
 }
 
