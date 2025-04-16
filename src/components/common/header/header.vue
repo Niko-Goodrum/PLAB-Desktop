@@ -17,9 +17,10 @@ const themeStore = useThemeStore();
         <span>면접</span>
       </div>
     </div>
-    <div>
-      <div>
-        <Button />
+    <div class="button_container">
+      <div class="auth_container">
+        <Button size="Medium" color="Primary" :on-click="() => console.log('Hello World')">포트폴리오 작성하기</Button>
+        <Button size="Medium" :line="true" :on-click="() => console.log('Hello World')">면접 준비하기</Button>
       </div>
       <div class="theme_toggle" @click="themeStore.toggleTheme">
         <div class="icon_wrapper">
@@ -45,47 +46,59 @@ header {
   padding: 20px 70px;
   background-color: var(--Background-Normal);
   box-sizing: border-box;
-}
 
-.logo_container {
-  @include flex-center;
-  gap: 100px;
-}
+  .logo_container {
+    @include flex-center;
+    gap: 100px;
 
-.menu_container {
-  @include flex-row;
-  gap: 20px;
-  padding: 10px;
+    .menu_container {
+      @include flex-row;
+      gap: 20px;
+      padding: 10px;
 
-  span {
-    @include HeadLine2-Bold;
-    color: var(--Label-Normal);
-    cursor: pointer;
+      span {
+        @include HeadLine2-Bold;
+        color: var(--Label-Normal);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .button_container {
+    @include flex-center;
+    gap: 10px;
+
+    .auth_container {
+      gap: 10px;
+      @include flex-center;
+
+      .theme_toggle {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.02s ease;
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+
+      .fade-icon-enter-active,
+      .fade-icon-leave-active {
+        transition: opacity 0.1s ease, transform 0.1s ease;
+      }
+
+      .fade-icon-enter-from,
+      .fade-icon-leave-to {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
   }
 }
 
-.theme_toggle {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.02s ease;
 
-  &:active {
-    transform: scale(0.9);
-  }
-}
-
-.fade-icon-enter-active,
-.fade-icon-leave-active {
-  transition: opacity 0.1s ease, transform 0.1s ease;
-}
-
-.fade-icon-enter-from,
-.fade-icon-leave-to {
-  opacity: 0;
-  transform: scale(0.8);
-}
 </style>
