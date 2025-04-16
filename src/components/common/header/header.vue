@@ -19,16 +19,15 @@ const themeStore = useThemeStore();
     </div>
     <div class="button_container">
       <div class="auth_container">
+        <!--Onclick은 추후에 수정-->
         <Button size="Medium" color="Primary" :on-click="() => console.log('Hello World')">포트폴리오 작성하기</Button>
         <Button size="Medium" :line="true" :on-click="() => console.log('Hello World')">면접 준비하기</Button>
       </div>
       <div class="theme_toggle" @click="themeStore.toggleTheme">
-        <div class="icon_wrapper">
-          <transition name="fade-icon" mode="out-in">
-            <Light v-if="themeStore.theme === 'light'" key="light" class="icon"/>
-            <Dark v-else key="dark" class="icon"/>
-          </transition>
-        </div>
+        <transition name="fade-icon" mode="out-in">
+          <Light v-if="themeStore.theme === 'light'" key="light" class="icon"/>
+          <Dark v-else key="dark" class="icon"/>
+        </transition>
       </div>
     </div>
   </header>
@@ -66,37 +65,35 @@ header {
 
   .button_container {
     @include flex-center;
-    gap: 10px;
+    gap: 25px;
 
     .auth_container {
       gap: 10px;
       @include flex-center;
 
-      .theme_toggle {
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.02s ease;
-
-        &:active {
-          transform: scale(0.9);
-        }
-      }
-
-      .fade-icon-enter-active,
-      .fade-icon-leave-active {
-        transition: opacity 0.1s ease, transform 0.1s ease;
-      }
-
-      .fade-icon-enter-from,
-      .fade-icon-leave-to {
-        opacity: 0;
-        transform: scale(0.8);
-      }
     }
+
+  }
+
+  .theme_toggle {
+    @include flex-center;
+    cursor: pointer;
+    transition: transform 0.02s ease;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .fade-icon-enter-active,
+  .fade-icon-leave-active {
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+
+  .fade-icon-enter-from,
+  .fade-icon-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
