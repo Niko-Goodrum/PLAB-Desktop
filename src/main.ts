@@ -3,6 +3,7 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "@/router";
 import { useThemeStore } from "@/stores/theme/theme.store";
+import { VueQueryPlugin, VueQueryPluginOptions } from "@tanstack/vue-query";
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -12,5 +13,16 @@ app.use(router);
 
 const themeStore = useThemeStore();
 themeStore.initTheme();
+
+const vueQueryPluginOptions: VueQueryPluginOptions = {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60 * 60,
+      },
+    },
+  },
+};
+app.use(VueQueryPlugin, vueQueryPluginOptions);
 
 app.mount("#app");

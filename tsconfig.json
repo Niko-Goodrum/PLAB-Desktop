@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
+    "resolveJsonModule": true,
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,5 +13,5 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["env.d.ts","src/**/*.ts", "./@types", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*.ts", "./@types", "src/**/*.vue"]
 }
