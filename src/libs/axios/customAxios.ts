@@ -6,6 +6,7 @@ import {
   ACCESS_TOKEN_KEY,
 } from "@/constants/token/token.constant";
 import requestHandler from "./requestHandler";
+import errorResponseHandler from "./errorResponseHandler";
 
 const createAxiosInstance = (config: AxiosRequestConfig) => {
   const baseConfig: AxiosRequestConfig = {
@@ -20,12 +21,12 @@ const createAxiosInstance = (config: AxiosRequestConfig) => {
   });
 };
 
-export const customAxios = createAxiosInstance({
+export const PlabAxios = createAxiosInstance({
   baseURL: config.Plab_Server,
   headers: {
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`!,
   },
 });
 
-customAxios.interceptors.request.use(requestHandler, (res) => res);
-// customAxios.interceptors.response.use((res) => res, _);
+PlabAxios.interceptors.request.use(requestHandler, (res) => res);
+PlabAxios.interceptors.response.use((res) => res, errorResponseHandler);

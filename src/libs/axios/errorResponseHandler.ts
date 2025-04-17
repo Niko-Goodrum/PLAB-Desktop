@@ -5,7 +5,7 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "@/constants/token/token.constant";
-import { customAxios } from "./customAxios";
+import { PlabAxios as customAxios } from "./customAxios";
 import { usePostRefreshToken } from "@/queries/auth/auth.query";
 
 let isRefreshing = false;
