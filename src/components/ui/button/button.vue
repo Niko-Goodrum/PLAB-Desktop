@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./style.scss";
-import type {ButtonProps} from "@/types/button/button.type";
+import type {ButtonProps} from "@/types/ui/button/button.type";
 
 defineProps<ButtonProps>();
 </script>

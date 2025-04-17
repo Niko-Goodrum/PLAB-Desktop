@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import type { TextFieldProps } from '@/types/textField/textField.type'
+import type { TextFieldProps } from '@/types/ui/textField/textField.type'
 import './style.scss'
 
 import Xmark from '@/components/icons/xmark.vue'
