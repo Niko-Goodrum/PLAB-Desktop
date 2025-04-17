@@ -30,9 +30,9 @@ html[data-theme="light"] {
   --Background-Neutral: #{$Neutral-99};
   --Background-Alternative: #{$Neutral-99};
 
-  --Status-Negative: #{$Red-50};
-  --Status-Cautionary: #{$Yellow-50};
-  --Status-Positive: #{$Green-50};
+  --Status-Error: #{$Red-50};
+  --Status-Warning: #{$Yellow-50};
+  --Status-Success: #{$Green-50};
   --Status-Info: #{$Blue-50};
 
   --Static-White: #{$Common-00};
@@ -69,9 +69,9 @@ html[data-theme="dark"] {
   --Background-Neutral: #{$Neutral-10};
   --Background-Alternative: #{$Neutral-7};
 
-  --Status-Negative: #{$Red-50};
-  --Status-Cautionary: #{$Yellow-50};
-  --Status-Positive: #{$Green-50};
+  --Status-Error: #{$Red-50};
+  --Status-Warning: #{$Yellow-50};
+  --Status-Success: #{$Green-50};
   --Status-Info: #{$Blue-50};
 
   --Static-White: #{$Common-00};
