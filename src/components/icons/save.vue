@@ -2,7 +2,7 @@
 import { IconProps } from "@/types/icon/icon.type";
 import { themeColor } from "@/design/color/themeColor";
 
-const { size = 16, color = "staticBlack" } = defineProps<IconProps>();
+const { size = 16, color = "labelNormal" } = defineProps<IconProps>();
 </script>
 
 <template>
