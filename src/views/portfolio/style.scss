@@ -1,0 +1,14 @@
+@use "@/design/function/flex" as *;
+
+.portfolio-main {
+  @include flex-row;
+  background-color: var(--Background-Neutral);
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--Line-Normal);
+  border: 0;
+}

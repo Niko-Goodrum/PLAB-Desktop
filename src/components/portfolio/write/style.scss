@@ -1,0 +1,65 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.write {
+  @include flex-column;
+  background-color: var(--Background-Normal);
+  padding: 20px 30px;
+  gap: 10px;
+
+  .contents {
+    @include flex-column;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    padding: 10px;
+
+    .banner {
+      @include flex-row;
+      background-color: var(--Primary-Normal);
+      width: 100%;
+      padding: 15px 30px;
+      gap: 30px;
+      border-radius: var(--Shape-Small);
+
+      div {
+        @include flex-column;
+        gap: 2px;
+
+        .title {
+          @include Title2-Bold;
+        }
+
+        .description {
+          @include Body-Bold;
+        }
+      }
+
+      p {
+        color: var(--Static-White);
+      }
+    }
+
+    .portfolio-editor {
+      @include flex-column;
+      width: 100%;
+      gap: 50px;
+      padding: 10px;
+
+      .profile-block {
+        @include flex-column;
+        gap: 20px;
+
+        .title {
+          @include HeadLine1-Bold;
+          @include flex-left;
+        }
+
+        .profile-content {
+          @include flex-column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}
