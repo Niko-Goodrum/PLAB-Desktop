@@ -50,6 +50,10 @@
   @include typography(14px);
 }
 
-@mixin Caption {
+@mixin Caption1 {
   @include typography(12px);
+}
+
+@mixin Caption2 {
+  @include typography(10px);
 }

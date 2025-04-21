@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./style.scss";
 import { ref } from "vue";
 import Xmark from "@/components/icons/xmark.vue";
 import type { FilledTextFieldProps } from "@/types/ui/filledTextField/filledTextField.type";
@@ -68,58 +69,3 @@ const isShowValue = ref(false);
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@use "@/design/function/flex" as *;
-@use "@/design/fonts/typography" as *;
-
-.filled-text-field {
-  @include flex-column;
-
-  width: min-content;
-  gap: 10px;
-
-  &--disabled {
-    opacity: 0.5;
-  }
-
-  &-label {
-    @include Label-Bold;
-    color: var(--Label-Bold);
-    margin: 0;
-  }
-
-  &-input {
-    @include flex-row;
-    align-items: center;
-
-    border: 1px solid var(--Line-Normal);
-    border-radius: var(--Shape-ExtraSmall);
-    background-color: var(--Background-Normal);
-
-    padding: 15px;
-
-    &--focused {
-      border: 1px solid var(--Primary-Normal);
-    }
-
-    &--error {
-      border: 1px solid var(--Status-Error);
-    }
-
-    &-text {
-      @include Label-Medium;
-      color: var(--Label-Normal);
-      width: 100%;
-
-      background-color: transparent;
-      border: none;
-      outline: none;
-
-      &::placeholder {
-        color: var(--Label-Assistive);
-      }
-    }
-  }
-}
-</style>

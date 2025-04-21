@@ -127,18 +127,34 @@
   @include Regular;
 }
 
-// Caption
-@mixin Caption-Bold {
-  @include Caption;
+// Caption1
+@mixin Caption1-Bold {
+  @include Caption1;
   @include Bold;
 }
 
-@mixin Caption-Medium {
-  @include Caption;
+@mixin Caption1-Medium {
+  @include Caption1;
   @include Medium;
 }
 
-@mixin Caption-Regular {
-  @include Caption;
+@mixin Caption1-Regular {
+  @include Caption1;
+  @include Regular;
+}
+
+// Caption2
+@mixin Caption2-Bold {
+  @include Caption2;
+  @include Bold;
+}
+
+@mixin Caption2-Medium {
+  @include Caption2;
+  @include Medium;
+}
+
+@mixin Caption2-Regular {
+  @include Caption2;
   @include Regular;
 }
