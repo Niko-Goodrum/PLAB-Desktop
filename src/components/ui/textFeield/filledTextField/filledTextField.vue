@@ -56,10 +56,10 @@ const handleChangeInput = (e: Event) => {
         class="filled-text-field-input-text"
         :value="value"
         :placeholder="placeholder ? placeholder : 'Input Your Text'"
+        @focus="isFocused = true"
         @blur="isFocused = false"
         @input="handleChangeInput"
-        @keydown="handleKeyDown"
-         />
+        @keydown="handleKeyDown" />
       <template v-if="value">
         <Error v-if="isError" />
         <template v-else>
