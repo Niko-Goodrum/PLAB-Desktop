@@ -10,7 +10,7 @@
   &--ExtraLarge { @include HeadLine2-Bold; padding: 10px 24px; border-radius: var(--Shape-Large) };
   &--Large { @include Body-Bold; padding: 14px 20px; border-radius: var(--Shape-Medium) };
   &--Medium { @include Label-Bold; padding: 10px 16px; border-radius: var(--Shape-Small) };
-  &--Small { @include Caption-Bold; padding: 8px 12px; border-radius: var(--Shape-ExtraSmall) };
+  &--Small { @include Caption1-Bold; padding: 8px 12px; border-radius: var(--Shape-ExtraSmall) };
 
   &--filled {
     &.btn--Primary {

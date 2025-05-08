@@ -13,6 +13,7 @@ defineProps<ButtonProps>();
       `btn--${color}`,
       line ? 'btn--outline' : 'btn--filled',
     ]"
+    :style="customStyle"
     @click="onClick">
     <slot />
   </button>
