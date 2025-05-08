@@ -39,19 +39,20 @@ const errorResponseHandler = async (error: AxiosError) => {
         isRefreshing = true;
 
         try {
-          const { data: newAccessToken } = await usePostRefreshToken({
+          const data = await usePostRefreshToken({
             refresh_token: currentRefreshToken,
           });
+          const newAccessToken = data.data.access_token;
 
           customAxios.defaults.headers.common[
             REQUEST_TOKEN_KEY
           ] = `Bearer ${newAccessToken}`;
 
-          token.setToken(ACCESS_TOKEN_KEY, newAccessToken.accessToken);
+          token.setToken(ACCESS_TOKEN_KEY, newAccessToken);
 
           isRefreshing = false;
 
-          onTokenRefreshed(newAccessToken.accessToken);
+          onTokenRefreshed(newAccessToken);
         } catch (error) {
           window.alert("세션이 만료되었습니다.");
           token.clearToken();

@@ -7,6 +7,9 @@ export interface SigninResponse extends Response {
   };
 }
 
-export interface RefreshResponse {
-  access_token: string;
+export interface RefreshResponse extends Response {
+  data: {
+    access_token: string;
+    refresh_token: string;
+  };
 }
