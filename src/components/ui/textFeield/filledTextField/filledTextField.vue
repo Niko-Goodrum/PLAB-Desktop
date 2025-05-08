@@ -7,13 +7,29 @@ import Error from "@/components/icons/error.vue";
 import Eye from "@/components/icons/eye/eye.vue";
 import EyeSlash from "@/components/icons/eye/eyeSlash.vue";
 
-const { type, text, width, placeholder, isLabel, isDisabled, isError } =
-  defineProps<FilledTextFieldProps>();
+const {
+  type,
+  text,
+  value,
+  width,
+  placeholder,
+  isLabel,
+  isDisabled,
+  isError,
+  handleKeyDown,
+} = defineProps<FilledTextFieldProps>();
 
-const value = ref("");
 const inputType = ref(type);
 const isFocused = ref(false);
 const isShowValue = ref(false);
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
+
+const handleChangeInput = (e: Event) => {
+  const { value } = e.target as HTMLInputElement;
+  emit("update:modelValue", value);
+};
 </script>
 
 <template>
@@ -38,14 +54,18 @@ const isShowValue = ref(false);
         :type="type === 'text' ? 'text' : inputType"
         :disabled="isDisabled"
         class="filled-text-field-input-text"
-        v-model="value"
+        :value="value"
         :placeholder="placeholder ? placeholder : 'Input Your Text'"
-        @focus="isFocused = true"
-        @blur="isFocused = false" />
+        @blur="isFocused = false"
+        @input="handleChangeInput"
+        @keydown="handleKeyDown"
+         />
       <template v-if="value">
         <Error v-if="isError" />
         <template v-else>
-          <Xmark v-if="type === 'text'" @click="value = ''" />
+          <Xmark
+            v-if="type === 'text'"
+            @click="emit('update:modelValue', '')" />
           <template v-else>
             <Eye
               v-if="isShowValue"

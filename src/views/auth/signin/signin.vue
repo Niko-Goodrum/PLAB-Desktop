@@ -3,19 +3,24 @@ import "./style.scss";
 import Logo from "@/assets/images/Logo.svg";
 import Button from "@/components/ui/button/button.vue";
 import FilledTextField from "@/components/ui/textFeield/filledTextField/filledTextField.vue";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+} from "@/constants/token/token.constant";
 import { showToast } from "@/libs/toast/swal";
-import { usePostSignup } from "@/queries/auth/auth.query";
+import token from "@/libs/token/token";
+import { usePostSignin } from "@/queries/auth/auth.query";
+import { SigninResponse } from "@/repository/auth/auth.param";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const postSignup = usePostSignup();
+const postSignin = usePostSignin();
 const isDisabled = ref(false);
 const isError = ref(false);
 const value = ref({
   email: "",
   password: "",
-  username: "",
 });
 
 const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,14 +33,16 @@ const handleClickSubmit = () => {
   if (isDisabled.value) return;
   isDisabled.value = true;
 
-  postSignup.mutate(value.value, {
-    onSuccess: () => {
+  postSignin.mutate(value.value, {
+    onSuccess: (data: SigninResponse) => {
       isError.value = false;
-      showToast("success", "회원가입 성공");
-      router.push("/signin");
+      token.setToken(ACCESS_TOKEN_KEY, data.data.access_token);
+      token.setToken(REFRESH_TOKEN_KEY, data.data.refresh_token);
+      showToast("success", "로그인 성공");
+      router.push("/");
     },
     onError: () => {
-      showToast("error", "회원가입 실패");
+      showToast("error", "로그인 실패");
       isError.value = true;
       isDisabled.value = false;
     },
@@ -44,19 +51,10 @@ const handleClickSubmit = () => {
 </script>
 
 <template>
-  <div class="signup">
-    <div class="signup-panel">
+  <div class="signin">
+    <div class="signin-panel">
       <Logo style="width: 100px; height: 26px" />
-      <div class="signup-panel-info">
-        <FilledTextField
-          v-model="value.username"
-          :type="'text'"
-          :width="'285px'"
-          :isDisabled="isDisabled"
-          :isError="isError"
-          :text="'이름'"
-          :value="value.username"
-          :placeholder="'이름을 입력해주세요'" />
+      <div class="signin-panel-info">
         <FilledTextField
           v-model="value.email"
           :type="'text'"
@@ -77,18 +75,18 @@ const handleClickSubmit = () => {
           :placeholder="'비밀번호을 입력해주세요'"
           :handleKeyDown="handleKeyDown" />
       </div>
-      <div class="signup-panel-btn">
+      <div class="signin-panel-btn">
         <Button
           :size="'Medium'"
           :color="'Primary'"
           :customStyle="{ width: '320px', padding: '13px 0' }"
           :onclick="handleClickSubmit"
-          >회원가입</Button
+          >로그인</Button
         >
-        <div class="signup-panel-btn-link">
-          <span>이미 계정이 있으시다면?</span>
-          <router-link to="/signin">
-            <span class="signup-panel-btn-link-text">로그인</span>
+        <div class="signin-panel-btn-link">
+          <span>아직 계정이 없으시다면?</span>
+          <router-link to="/signup">
+            <span class="signin-panel-btn-link-text">회원가입</span>
           </router-link>
         </div>
       </div>

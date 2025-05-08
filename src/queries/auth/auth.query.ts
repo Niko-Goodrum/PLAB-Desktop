@@ -1,6 +1,12 @@
 import { useMutation } from "@tanstack/vue-query";
-import { SignupParams, SigninParams, RefreshParams } from "@/repository/auth/auth.param";
+import {
+  SignupParams,
+  SigninParams,
+  RefreshParams,
+} from "@/repository/auth/auth.param";
 import authRepository from "@/repository/auth/auth.repository";
+import { SigninResponse } from "@/repository/auth/auth.param.js";
+import { AxiosError } from "axios";
 
 export const usePostSignup = () => {
   const mutation = useMutation({
@@ -13,7 +19,7 @@ export const usePostSignup = () => {
 };
 
 export const usePostSignin = () => {
-  const mutation = useMutation({
+  const mutation = useMutation<SigninResponse, AxiosError, SigninParams>({
     mutationFn: (params: SigninParams) => {
       return authRepository.postSignin(params);
     },

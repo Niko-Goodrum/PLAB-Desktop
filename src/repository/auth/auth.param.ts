@@ -1,3 +1,5 @@
+import { Response } from "@/types/util/response.js";
+
 export interface SignupParams {
   email: string;
   password: string;
@@ -9,9 +11,11 @@ export interface SigninParams {
   password: string;
 }
 
-export interface SigninResponse {
-  access_token: string;
-  refresh_token: string;
+export interface SigninResponse extends Response {
+  data: {
+    access_token: string;
+    refresh_token: string;
+  };
 }
 
 export interface RefreshParams {

@@ -1,6 +1,9 @@
+import { VueElement } from "vue";
+
 type inputType = "text" | "password";
 
 export interface FilledTextFieldProps {
+  value: string;
   type: inputType;
   text?: string;
   width?: string;
@@ -8,4 +11,5 @@ export interface FilledTextFieldProps {
   isLabel?: boolean;
   isDisabled?: boolean;
   isError?: boolean;
+  handleKeyDown?: (e: KeyboardEvent) => void;
 }
