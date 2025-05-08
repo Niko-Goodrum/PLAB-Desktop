@@ -10,7 +10,7 @@ import {
 import { showToast } from "@/libs/toast/swal";
 import token from "@/libs/token/token";
 import { usePostSignin } from "@/queries/auth/auth.query";
-import { SigninResponse } from "@/repository/auth/auth.param";
+import { SigninResponse } from "@/types/auth/auth.type";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 

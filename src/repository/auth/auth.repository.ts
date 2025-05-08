@@ -1,13 +1,8 @@
 import axios from "axios";
 import config from "@/config/config.json";
 import { Response } from "@/types/util/response";
-import {
-  SignupParams,
-  SigninParams,
-  SigninResponse,
-  RefreshParams,
-  RefreshResponse,
-} from "./auth.param";
+import { SigninResponse, RefreshResponse } from "@/types/auth/auth.type";
+import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
@@ -28,7 +23,9 @@ class AuthRepository {
     return data;
   }
 
-  public async postRefreshToken(params: RefreshParams): Promise<RefreshResponse> {
+  public async postRefreshToken(
+    params: RefreshParams
+  ): Promise<RefreshResponse> {
     const { data } = await axios.post(
       `${config.Plab_Server}/auth/refresh`,
       params
