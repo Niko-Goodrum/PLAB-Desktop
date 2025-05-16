@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./style.scss";
-import type {ButtonProps} from "@/types/ui/button/button.type";
+import type { ButtonProps } from "@/types/ui/button/button.type";
 
 defineProps<ButtonProps>();
 </script>
@@ -11,10 +11,9 @@ defineProps<ButtonProps>();
       'btn',
       `btn--${size}`,
       `btn--${color}`,
-      line ? 'btn--outline' : 'btn--filled'
+      line ? 'btn--outline' : 'btn--filled',
     ]"
-      @click="onClick"
-  >
+      @click="onClick">
     <slot />
   </button>
 </template>

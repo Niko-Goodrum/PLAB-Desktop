@@ -9,6 +9,8 @@
 .idea/
 node_modules/
 .vscode/
+config/
+config.json
 
 # Thumbnails
 ._*
