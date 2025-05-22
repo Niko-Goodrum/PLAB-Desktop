@@ -1,0 +1,64 @@
+@use "@/design/fonts/typography" as *;
+@use "@/design/function/flex" as *;
+@use "@/design/shadow/elevation" as *;
+
+.signin {
+  @include flex-center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--Background-Neutral);
+
+  &-panel {
+    @include flex-column;
+    @include Black-3;
+    align-items: center;
+
+    width: min-content;
+    height: auto;
+
+    border-radius: var(--Shape-Large);
+    background-color: var(--Background-Normal);
+
+    padding: 50px;
+    gap: 30px;
+
+    &-info {
+      @include flex-column;
+      align-items: center;
+
+      padding: 5px;
+      gap: 10px;
+    }
+
+    &-btn {
+      @include flex-column;
+      align-items: center;
+
+      gap: 15px;
+
+      &-link {
+        @include flex-row;
+        align-items: center;
+
+        gap: 10px;
+
+        span {
+          @include Caption1-Bold;
+          color: var(--Label-Normal);
+        }
+
+        a {
+          @include flex-row;
+          text-decoration: none;
+
+          span {
+            @include Caption1-Bold;
+            color: var(--Primary-Normal);
+          }
+        }
+      }
+    }
+  }
+}

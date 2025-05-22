@@ -9,15 +9,6 @@ export interface SigninParams {
   password: string;
 }
 
-export interface SigninResponse {
-  access_token: string;
-  refresh_token: string;
-}
-
 export interface RefreshParams {
   refresh_token: string;
-}
-
-export interface RefreshResponse {
-  access_token: string;
 }

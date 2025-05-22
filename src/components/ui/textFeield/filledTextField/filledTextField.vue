@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "./style.scss";
 import { ref } from "vue";
 import Xmark from "@/components/icons/xmark.vue";
 import type { FilledTextFieldProps } from "@/types/ui/filledTextField/filledTextField.type";
@@ -6,13 +7,29 @@ import Error from "@/components/icons/error.vue";
 import Eye from "@/components/icons/eye/eye.vue";
 import EyeSlash from "@/components/icons/eye/eyeSlash.vue";
 
-const { type, text, width, placeholder, isLabel, isDisabled, isError } =
-  defineProps<FilledTextFieldProps>();
+const {
+  type,
+  text,
+  value,
+  width,
+  placeholder,
+  isLabel,
+  isDisabled,
+  isError,
+  handleKeyDown,
+} = defineProps<FilledTextFieldProps>();
 
-const value = ref("");
 const inputType = ref(type);
 const isFocused = ref(false);
 const isShowValue = ref(false);
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
+
+const handleChangeInput = (e: Event) => {
+  const { value } = e.target as HTMLInputElement;
+  emit("update:modelValue", value);
+};
 </script>
 
 <template>
@@ -37,14 +54,18 @@ const isShowValue = ref(false);
         :type="type === 'text' ? 'text' : inputType"
         :disabled="isDisabled"
         class="filled-text-field-input-text"
-        v-model="value"
+        :value="value"
         :placeholder="placeholder ? placeholder : 'Input Your Text'"
         @focus="isFocused = true"
-        @blur="isFocused = false" />
+        @blur="isFocused = false"
+        @input="handleChangeInput"
+        @keydown="handleKeyDown" />
       <template v-if="value">
         <Error v-if="isError" />
         <template v-else>
-          <Xmark v-if="type === 'text'" @click="value = ''" />
+          <Xmark
+            v-if="type === 'text'"
+            @click="emit('update:modelValue', '')" />
           <template v-else>
             <Eye
               v-if="isShowValue"
@@ -68,58 +89,3 @@ const isShowValue = ref(false);
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-@use "@/design/function/flex" as *;
-@use "@/design/fonts/typography" as *;
-
-.filled-text-field {
-  @include flex-column;
-
-  width: min-content;
-  gap: 10px;
-
-  &--disabled {
-    opacity: 0.5;
-  }
-
-  &-label {
-    @include Label-Bold;
-    color: var(--Label-Bold);
-    margin: 0;
-  }
-
-  &-input {
-    @include flex-row;
-    align-items: center;
-
-    border: 1px solid var(--Line-Normal);
-    border-radius: var(--Shape-ExtraSmall);
-    background-color: var(--Background-Normal);
-
-    padding: 15px;
-
-    &--focused {
-      border: 1px solid var(--Primary-Normal);
-    }
-
-    &--error {
-      border: 1px solid var(--Status-Error);
-    }
-
-    &-text {
-      @include Label-Medium;
-      color: var(--Label-Normal);
-      width: 100%;
-
-      background-color: transparent;
-      border: none;
-      outline: none;
-
-      &::placeholder {
-        color: var(--Label-Assistive);
-      }
-    }
-  }
-}
-</style>
