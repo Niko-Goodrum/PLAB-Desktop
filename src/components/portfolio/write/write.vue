@@ -1,29 +1,17 @@
 <script setup lang="ts">
-import "./style.scss";
-import MirrorBall from "@/assets/images/portfolio/mirrorBall.svg";
-
+import Banner from "@/components/banner/banner.vue";
+import Wordmark from "@/components/wordmark/wordmark.vue";
+import Profile from "@/components/profile/profile.vue";
+import styles from "./style.module.scss";
 </script>
 
 <template>
-  <section class="write">
-    <div class="contents">
-      <div class="banner">
-        <MirrorBall />
-        <div>
-          <p class="title">PLAB을 통해</p>
-          <p class="description">깔끔한 포트폴리오를 만들어보세요!</p>
-        </div>
-      </div>
-      <div class="portfolio-editor">
-        <div class="profile-block">
-          <p class="title">기본 정보</p>
-          <div class="profile-content">
-            <div class="profile_image">
-              <div class="enter_information"></div>
-              <div class="image_section"></div>
-            </div>
-          </div>
-        </div>
+  <section :class="styles.write">
+    <div :class="styles.contents">
+      <Banner />
+      <div :class="styles.portfolio_editor">
+        <Profile />
+        <Wordmark />
       </div>
     </div>
   </section>

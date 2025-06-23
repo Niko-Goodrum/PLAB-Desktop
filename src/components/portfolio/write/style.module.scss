@@ -1,0 +1,23 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.write {
+  @include flex-column;
+  background-color: var(--Background-Normal);
+  padding: 20px 30px;
+  gap: 10px;
+  width: 100%;
+}
+
+.contents {
+  @include flex-column;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+  padding: 10px;
+}
+
+.portfolio_editor {
+  @include flex-column;
+  gap: 20px;
+}
