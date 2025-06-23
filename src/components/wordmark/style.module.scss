@@ -33,7 +33,7 @@
 
   &:empty::before {
     content: attr(data-placeholder);
-    color: var(--Label-Disable);
+    color: var(--Label-Alternative);
     pointer-events: none;
   }
 
