@@ -1,0 +1,44 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.editorWrapper {
+  @include flex-column;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid var(--Line-Normal);
+  border-radius: var(--Shape-Medium);
+  overflow: hidden;
+}
+
+.toolbar {
+  @include flex-row;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--Fill-Normal);
+  color: var(--Line-Normal);
+  gap: 10px;
+  cursor: pointer;
+  button {
+    border: none;
+    background: none;
+  }
+}
+
+.editor {
+  @include Label-Medium;
+  min-height: 180px;
+  padding: 10px;
+  outline: none;
+  color: var(--Label-Normal);
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: var(--Label-Disable);
+    pointer-events: none;
+  }
+
+  ul,
+  ol {
+    margin-left: 20px;
+  }
+}

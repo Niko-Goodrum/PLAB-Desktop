@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
+import "@/design/global.scss";
 </script>
 
 <template>
@@ -8,6 +9,4 @@ import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
 </template>
 
 <style scoped lang="scss">
-@use "@/design/global";
-@use "@/design/color/sementic" as *;
 </style>
