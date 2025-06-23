@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useUploader } from "@/composables/upload/useUpload";
+import { useProfileStore } from "@/stores/portfolio/profile.store";
 import Pen from "@/components/icons/pen.vue";
 import Trash from "@/components/icons/trash.vue";
 import styles from "./style.module.scss";
 
 const fileInputRef = ref<HTMLInputElement | null>(null);
 const { file, url, uploading } = useUploader();
+const store = useProfileStore();
 
 const openFilePicker = () => {
   fileInputRef.value?.click();
@@ -21,7 +23,14 @@ const handleFileChange = (e: Event) => {
 const clearFile = () => {
   file.value = null;
   if (fileInputRef.value) fileInputRef.value.value = "";
+  store.setImageUrl("");
 };
+
+watch(url, (newUrl) => {
+  if (newUrl) {
+    store.setImageUrl(newUrl);
+  }
+});
 </script>
 
 <template>
@@ -39,7 +48,7 @@ const clearFile = () => {
     </div>
 
     <div v-else :class="styles.uploadPlaceholder" @click="openFilePicker">
-      이미지 업로드 클릭
+      이미지 업로드
     </div>
 
     <div :class="styles.actionButtons" v-if="url">
