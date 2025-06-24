@@ -1,0 +1,80 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.container {
+  @include flex-column;
+  width: 100%;
+  gap: 15px;
+
+  .title {
+    @include Body-Bold;
+    color: var(--Label-Normal);
+  }
+}
+
+.wrapper {
+  background: var(--Fill-Normal);
+  border-radius: var(--Shape-ExtraSmall);
+  border: 1px solid var(--Line-Normal);
+  overflow: hidden;
+
+  .haveSkill {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--Line-Normal);
+  }
+}
+
+.skill_container {
+  @include flex-column;
+  padding: 15px 30px;
+  gap: 25px;
+  background-color: var(--Background-Normal);
+}
+
+.section {
+  width: 100%;
+  gap: 10px;
+  @include flex-column;
+}
+
+.sectionTitle {
+  @include Label-Bold;
+  color: var(--Label-Normal);
+}
+
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  @include Caption1-Bold;
+  @include flex-center;
+  background: var(--Background-Normal);
+  border: 1px solid var(--Line-Normal);
+  color: var(--Label-Neutral);
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.selectedTag {
+  @include flex-center;
+  @include Caption1-Bold;
+  background: var(--Primary-Normal);
+  color: var(--Static-White);
+  padding: 5px 10px;
+  border-radius: 4px;
+  gap: 10px;
+}
+
+.remove {
+  background: transparent;
+  border: none;
+  color: var(--Static-White);
+  cursor: pointer;
+}
