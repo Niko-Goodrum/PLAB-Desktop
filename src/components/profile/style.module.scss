@@ -18,10 +18,12 @@
   gap: 30px;
 
   .enterInformation {
+    width: 100%;
     @include flex-column;
     gap: 30px;
 
     .upInformation {
+      width: 100%;
       display: flex;
       gap: 30px;
     }

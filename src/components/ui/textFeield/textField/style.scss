@@ -3,6 +3,7 @@
 
 .textfield {
   @include flex-column;
+  width: 100%;
   gap: 10px;
 
   .label {

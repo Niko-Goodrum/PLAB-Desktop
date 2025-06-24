@@ -48,7 +48,7 @@ const wrapperClass = computed(() => ({
 
 <template>
   <div :class="wrapperClass">
-    <label v-if="props.label" class="label" :for="props.id">{{ props.label }}</label>
+    <p v-if="props.label" class="label" :for="props.id">{{ props.label }}</p>
     <div class="input-wrapper">
       <input
           :id="props.id"
