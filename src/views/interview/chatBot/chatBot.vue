@@ -5,10 +5,19 @@ import ArrowDown from "@/components/icons/arrow/arrowDown.vue";
 import Check from "@/components/icons/check.vue";
 import Interviewer from "@/assets/images/interview/interviewer.vue";
 import Apply from "@/components/icons/apply.vue";
-import { onMounted, ref } from "vue";
+import { InterviewType } from "@/types/interview/interview.type";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 
-const message = ref("");
+const isOpen = ref(false);
+const message = ref<string>("");
+const categoryRef = ref<HTMLDivElement | null>(null);
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
+const { interviewType } = defineProps<{
+  interviewType: InterviewType;
+}>();
+const emit = defineEmits<{
+  (e: "handleChangeType", type: InterviewType): void;
+}>();
 
 const autoResize = () => {
   if (textareaRef.value) {
@@ -16,6 +25,24 @@ const autoResize = () => {
     textareaRef.value.style.height = `${textareaRef.value.scrollHeight}px`;
   }
 };
+
+const handleClickClose = (event: MouseEvent) => {
+  if (
+    isOpen.value &&
+    categoryRef.value &&
+    !categoryRef.value.contains(event.target as Node)
+  ) {
+    isOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickClose);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickClose);
+});
 </script>
 
 <template>
@@ -29,23 +56,52 @@ const autoResize = () => {
     </div>
     <div class="chatbot-main">
       <div class="chatbot-main-top">
-        <div class="chatbot-main-top-category">
-          <span class="chatbot-main-top-category-text">기술 면접</span>
-          <ArrowDown />
+        <div
+          ref="categoryRef"
+          class="chatbot-main-top-category"
+          @click="isOpen = !isOpen">
+          <span class="chatbot-main-top-category-text">{{
+            interviewType === "Tech" ? "기술 면접" : "인성 면접"
+          }}</span>
+          <ArrowUp v-if="isOpen" color="labelNormal" />
+          <ArrowDown v-else color="labelNormal" />
         </div>
-        <div class="chatbot-main-top-option">
-          <div class="chatbot-main-top-option-item">
+        <div v-if="isOpen" class="chatbot-main-top-option">
+          <div
+            class="chatbot-main-top-option-item"
+            @click="() => emit('handleChangeType', 'Tech')">
             <span
               :class="[
                 'chatbot-main-top-option-item-text',
-                { 'chatbot-main-top-option-item-text-selected': true },
+                {
+                  'chatbot-main-top-option-item-text-selected':
+                    interviewType === 'Tech',
+                },
               ]"
               >기술 면접</span
             >
-            <Check size="22" color="primaryNormal" />
+            <Check
+              v-if="interviewType === 'Tech'"
+              size="22"
+              color="primaryNormal" />
           </div>
-          <div class="chatbot-main-top-option-item">
-            <span class="chatbot-main-top-option-item-text">인성 면접</span>
+          <div
+            class="chatbot-main-top-option-item"
+            @click="() => emit('handleChangeType', 'Person')">
+            <span
+              :class="[
+                'chatbot-main-top-option-item-text',
+                {
+                  'chatbot-main-top-option-item-text-selected':
+                    interviewType === 'Person',
+                },
+              ]"
+              >인성 면접</span
+            >
+            <Check
+              v-if="interviewType === 'Person'"
+              size="22"
+              color="primaryNormal" />
           </div>
         </div>
       </div>

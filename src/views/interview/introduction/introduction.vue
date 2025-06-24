@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./style.scss";
-import type { InterviewType } from "../interview.vue";
+import type { InterviewType } from "@/types/interview/interview.type";
 import Interviewer from "@/assets/images/interview/interviewer.vue";
 import Button from "@/components/ui/button/button.vue";
 
