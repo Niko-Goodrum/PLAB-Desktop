@@ -1,6 +1,17 @@
 @use "@/design/function/flex" as *;
 @use "@/design/fonts/typography" as *;
 
+.container {
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  @include flex-column;
+
+  p {
+    @include Label-Bold;
+    color: var(--Label-Normal);
+  }
+}
 .editorWrapper {
   @include flex-column;
   gap: 10px;

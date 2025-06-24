@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import {ref, onMounted, watch} from "vue";
+import {useProfileStore} from "@/stores/portfolio/profile.store";
 import styles from "./style.module.scss";
+
 import Bold from "@/components/icons/bold.vue";
 import BulletedList from "@/components/icons/list/bulletedList.vue";
 import NumberList from "@/components/icons/list/numberList.vue";
 
 const editorRef = ref<HTMLDivElement | null>(null);
+const store = useProfileStore();
 
 const insertAtCaret = (text: string) => {
   const sel = window.getSelection();
@@ -38,25 +41,25 @@ const wrapOrInsertMarkdownBold = () => {
   } else {
     insertAtCaret("****");
   }
+
+  updateStore();
 };
 
 const exec = (command: string) => {
   document.execCommand(command, false);
+  updateStore();
 };
 
-const handleInput = (e: Event) => {
-  const el = e.target as HTMLDivElement;
-  if (!el.innerHTML) el.innerHTML = "";
+const handleInput = () => {
+  updateStore();
 };
 
 const handleKeydown = (e: KeyboardEvent) => {
-  // 볼드 처리
   if (e.metaKey && e.key.toLowerCase() === "b") {
     e.preventDefault();
     wrapOrInsertMarkdownBold();
   }
 
-  // 리스트
   if (e.key === " " && editorRef.value) {
     const sel = window.getSelection();
     if (!sel || !sel.anchorNode) return;
@@ -77,32 +80,43 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 };
 
+const updateStore = () => {
+  if (editorRef.value) {
+    store.wordmark = editorRef.value.innerText;
+  }
+};
+
 onMounted(() => {
   editorRef.value?.addEventListener("input", handleInput);
 });
 </script>
 
 <template>
-  <div :class="styles.editorWrapper">
-    <div :class="styles.toolbar">
-      <button @click="wrapOrInsertMarkdownBold">
-        <Bold />
-      </button>
-      <span>|</span>
-      <button @click="exec('insertUnorderedList')">
-        <BulletedList />
-      </button>
-      <button @click="exec('insertOrderedList')">
-        <NumberList />
-      </button>
-    </div>
+  <div :class="styles.container">
+    <p>
+      자기소개
+    </p>
+    <div :class="styles.editorWrapper">
+      <div :class="styles.toolbar">
+        <button @click="wrapOrInsertMarkdownBold">
+          <Bold/>
+        </button>
+        <span>|</span>
+        <button @click="exec('insertUnorderedList')">
+          <BulletedList/>
+        </button>
+        <button @click="exec('insertOrderedList')">
+          <NumberList/>
+        </button>
+      </div>
 
-    <div
-        ref="editorRef"
-        contenteditable="true"
-        :class="styles.editor"
-        @keydown="handleKeydown"
-        data-placeholder="내용을 입력하세요"
-    />
+      <div
+          ref="editorRef"
+          contenteditable="true"
+          :class="styles.editor"
+          @keydown="handleKeydown"
+          data-placeholder="내용을 입력하세요"
+      />
+    </div>
   </div>
 </template>
