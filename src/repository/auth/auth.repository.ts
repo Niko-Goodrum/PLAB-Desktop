@@ -1,5 +1,4 @@
 import axios from "axios";
-import config from "@/config/config.json";
 import { Response } from "@/types/util/response";
 import { SigninResponse, RefreshResponse } from "@/types/auth/auth.type";
 import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
@@ -12,7 +11,6 @@ class AuthRepository {
       `${SERVER_URL}/auth/signup`,
       params
     );
-
     return data;
   }
 
@@ -21,18 +19,14 @@ class AuthRepository {
       `${SERVER_URL}/auth/signin`,
       params
     );
-
     return data;
   }
 
-  public async postRefreshToken(
-    params: RefreshParams
-  ): Promise<RefreshResponse> {
+  public async postRefreshToken(params: RefreshParams): Promise<RefreshResponse> {
     const { data } = await axios.post(
       `${SERVER_URL}/auth/refresh`,
       params
     );
-
     return data;
   }
 }

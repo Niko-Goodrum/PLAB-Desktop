@@ -162,4 +162,5 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/vue,webstorm,macos
 
-설명
+.env
+.env.*
