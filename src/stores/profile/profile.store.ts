@@ -1,8 +1,7 @@
-// src/stores/portfolio/profile.store.ts
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useProfileStore = defineStore("portfolio", () => {
+export const useProfileStore = defineStore("profile", () => {
     const name = ref("");
     const phoneNumber = ref("");
     const email = ref("");

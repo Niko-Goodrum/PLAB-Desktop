@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useProfileStore } from "@/stores/portfolio/profile.store";
+import { useProfileStore } from "@/stores/profile/profile.store.js";
 import TextField from "@/components/ui/textFeield/textField/textField.vue";
 import Upload from "@/components/upload/upload.vue";
 import styles from "./style.module.scss";
@@ -13,10 +13,10 @@ const store = useProfileStore();
     <div :class="styles.profileContent">
       <div :class="styles.enterInformation">
         <div :class="styles.upInformation">
-          <TextField v-model="store.name" label="이름" show-clear:true/>
-          <TextField v-model="store.phoneNumber" label="전화번호" />
+          <TextField v-model="store.name" label="이름" show-clear:true placeholder="이름을 입력해주세요." />
+          <TextField v-model="store.phoneNumber" label="전화번호" placeholder="전화번호를 입력해주세요." />
         </div>
-        <TextField v-model="store.email" label="이메일" />
+        <TextField v-model="store.email" label="이메일" placeholder="이메일을 입력해주세요." />
       </div>
       <div :class="styles.imageSection">
         <Upload v-model="store.image_url" />

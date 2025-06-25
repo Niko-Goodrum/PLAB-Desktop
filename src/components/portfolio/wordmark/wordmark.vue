@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import {ref, onMounted, watch} from "vue";
-import {useProfileStore} from "@/stores/portfolio/profile.store";
+import { ref, onMounted } from "vue";
 import styles from "./style.module.scss";
 
 import Bold from "@/components/icons/bold.vue";
 import BulletedList from "@/components/icons/list/bulletedList.vue";
 import NumberList from "@/components/icons/list/numberList.vue";
 
+const props = defineProps<{
+  modelValue: string;
+  label?: string;
+  placeholder?: string;
+}>();
+
+const emit = defineEmits(["update:modelValue"]);
+
 const editorRef = ref<HTMLDivElement | null>(null);
-const store = useProfileStore();
 
 const insertAtCaret = (text: string) => {
   const sel = window.getSelection();
@@ -42,16 +48,16 @@ const wrapOrInsertMarkdownBold = () => {
     insertAtCaret("****");
   }
 
-  updateStore();
+  updateModel();
 };
 
 const exec = (command: string) => {
   document.execCommand(command, false);
-  updateStore();
+  updateModel();
 };
 
 const handleInput = () => {
-  updateStore();
+  updateModel();
 };
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -80,33 +86,34 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 };
 
-const updateStore = () => {
+const updateModel = () => {
   if (editorRef.value) {
-    store.wordmark = editorRef.value.innerText;
+    emit("update:modelValue", editorRef.value.innerText);
   }
 };
 
 onMounted(() => {
-  editorRef.value?.addEventListener("input", handleInput);
+  if (editorRef.value) {
+    editorRef.value.innerText = props.modelValue;
+    editorRef.value.addEventListener("input", handleInput);
+  }
 });
 </script>
 
 <template>
   <div :class="styles.container">
-    <p>
-      자기소개
-    </p>
+    <p>{{ props.label || "자기소개" }}</p>
     <div :class="styles.editorWrapper">
       <div :class="styles.toolbar">
         <button @click="wrapOrInsertMarkdownBold">
-          <Bold/>
+          <Bold />
         </button>
         <span>|</span>
         <button @click="exec('insertUnorderedList')">
-          <BulletedList/>
+          <BulletedList />
         </button>
         <button @click="exec('insertOrderedList')">
-          <NumberList/>
+          <NumberList />
         </button>
       </div>
 
@@ -115,7 +122,7 @@ onMounted(() => {
           contenteditable="true"
           :class="styles.editor"
           @keydown="handleKeydown"
-          data-placeholder="내용을 입력하세요"
+          :data-placeholder="props.placeholder || '내용을 입력하세요.'"
       />
     </div>
   </div>

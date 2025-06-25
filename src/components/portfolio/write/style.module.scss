@@ -23,7 +23,11 @@
 }
 
 .project {
-  //width: 100%;
   @include flex-column;
   gap: 20px;
+
+  .project_title {
+    @include HeadLine1-Bold;
+    color: var(--Label-Normal);
+  }
 }

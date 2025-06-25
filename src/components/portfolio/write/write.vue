@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import Banner from "@/components/ui/banner/banner.vue";
-import Wordmark from "@/components/wordmark/wordmark.vue";
-import Profile from "@/components/profile/profile.vue";
+import Wordmark from "@/components/portfolio/wordmark/wordmark.vue";
+import Profile from "@/components/portfolio/profile/profile.vue";
 import styles from "./style.module.scss";
 import Work from "@/components/work/work.vue";
-import Stack from "@/components/stack/stack.vue";
+import Stack from "@/components/portfolio/stack/stack.vue";
+import Project from "@/components/portfolio/project/project.vue";
+import {useProfileStore} from "@/stores/profile/profile.store.js";
+
+const store = useProfileStore();
 </script>
 
 <template>
@@ -13,12 +17,13 @@ import Stack from "@/components/stack/stack.vue";
       <Banner />
       <div :class="styles.portfolio_editor">
         <Profile />
-        <Wordmark />
+        <Wordmark label="자기소개" v-model="store.wordmark" />
         <Work />
-        <Stack />
+        <Stack v-model="store.stack" />
       </div>
       <div :class="styles.project">
-
+        <p :class="styles.project_title">프로젝트 · 경력</p>
+        <Project />
       </div>
     </div>
   </section>
