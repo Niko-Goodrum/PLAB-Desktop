@@ -2,13 +2,15 @@ import cookie from "js-cookie";
 
 class Cookie {
   public getCookie(key: string) {
-    if (cookie.get(key) !== undefined) {
-      return cookie.get(key);
-    }
+    return cookie.get(key);
   }
 
   public setCookie(key: string, value: string) {
-    cookie.set(key, value);
+    cookie.set(key, value, {
+      path: "/",
+      secure: true,
+      sameSite: "None"
+    });
   }
 
   public removeCookie(key: string) {
