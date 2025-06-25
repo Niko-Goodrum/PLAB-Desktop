@@ -6,10 +6,20 @@ import Check from "@/components/icons/check.vue";
 import Interviewer from "@/assets/images/interview/interviewer.vue";
 import Apply from "@/components/icons/apply.vue";
 import { InterviewType } from "@/types/interview/interview.type";
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
+import {
+  usePostCreateInterview,
+  usePostInterview,
+} from "@/queries/interview/interview.query";
+import { showToast } from "@/libs/toast/swal";
 
+const postInterview = usePostInterview();
+const postCreateInterview = usePostCreateInterview();
 const isOpen = ref(false);
-const message = ref<string>("");
+const chatId = ref<string>("");
+const answer = ref<string>("");
+const isLoading = ref(false);
+const chatbotMessage = ref<string>("");
 const categoryRef = ref<HTMLDivElement | null>(null);
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
 const { interviewType } = defineProps<{
@@ -36,6 +46,51 @@ const handleClickClose = (event: MouseEvent) => {
   }
 };
 
+const handleClickReply = () => {
+  if (isLoading.value) return;
+  isLoading.value = true;
+
+  if (answer.value === "") {
+    showToast("error", "답변을 작성해주세요.");
+    isLoading.value = false;
+    return;
+  }
+
+  postInterview.mutate(
+    { answer: answer.value, chat_id: chatId.value },
+    {
+      onSuccess: (data) => {
+        chatId.value = data.data.chat_id;
+        chatbotMessage.value = data.data.feedback;
+        setTimeout(() => {
+          chatbotMessage.value = data.data.question;
+        }, 5000);
+        isLoading.value = false;
+      },
+      onError: () => {
+        showToast("error", "챗봇 메시지를 불러오는데 실패했습니다.");
+        isLoading.value = false;
+      },
+    }
+  );
+};
+
+watch(
+  () => interviewType,
+  (newType) => {
+    postCreateInterview.mutate(newType, {
+      onSuccess: (data) => {
+        chatId.value = data.data.chat_id;
+        chatbotMessage.value = data.data.question;
+      },
+      onError: () => {
+        showToast("error", "챗봇 메시지를 불러오는데 실패했습니다.");
+      },
+    });
+  },
+  { immediate: true }
+);
+
 onMounted(() => {
   document.addEventListener("click", handleClickClose);
 });
@@ -47,13 +102,11 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="chatbot">
-    <div class="chatbot-sidebar">
-      <div
-        v-for="item in Array.from({ length: 30 })"
-        class="chatbot-sidebar-item">
+    <!-- <div class="chatbot-sidebar">
+      <div v-for="i in 30" :key="i" class="chatbot-sidebar-item">
         New Chatasdfsfsdfasfasdfasf
       </div>
-    </div>
+    </div> -->
     <div class="chatbot-main">
       <div class="chatbot-main-top">
         <div
@@ -108,8 +161,7 @@ onBeforeUnmount(() => {
       <div class="chatbot-main-bottom">
         <div class="chatbot-main-bottom-ai">
           <div class="chatbot-main-bottom-ai-speechBubble">
-            정적 타이핑을 통해 코드의 안정성을 향상시키는 건 맞으나, 그에 대한
-            이유도 함께 첨부하면 좋아요
+            {{ chatbotMessage || "면접 질문 불러오는 중..." }}
           </div>
           <Interviewer />
         </div>
@@ -117,11 +169,13 @@ onBeforeUnmount(() => {
           <textarea
             rows="1"
             ref="textareaRef"
-            v-model="message"
+            v-model="answer"
             @input="autoResize"
             class="chatbot-main-bottom-input-textarea"
             placeholder="질문에 대한 답변을 입력해주세요." />
-          <div class="chatbot-main-bottom-input-button">
+          <div
+            class="chatbot-main-bottom-input-button"
+            @click="handleClickReply">
             <Apply />
           </div>
         </div>

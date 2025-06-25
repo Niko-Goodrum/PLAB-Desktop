@@ -9,11 +9,15 @@ class InterviewRepository {
   public async postCreateInterview(
     params: CreateInterviewParams
   ): Promise<CreateInterviewResponse> {
-    const { data } = await PlabAxios.post("/interview/create", params);
+    const { data } = await PlabAxios.post("/interview/create", {
+      type: params,
+    });
     return data;
   }
 
-  public async postInterview(params: InterviewParams): Promise<InterviewResponse> {
+  public async postInterview(
+    params: InterviewParams
+  ): Promise<InterviewResponse> {
     const { data } = await PlabAxios.post("/interview", params);
     return data;
   }
