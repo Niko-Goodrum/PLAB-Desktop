@@ -3,6 +3,7 @@ import Header from "@/components/common/header/header.vue";
 import MainCharacter from "@/assets/images/main/character.vue";
 import Portfolio from "@/assets/images/main/portfolio.svg";
 import Business from "@/assets/images/main/business.vue";
+import token from "@/libs/token/token";
 import { ACCESS_TOKEN_KEY } from "@/constants/token/token.constant";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -10,9 +11,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 onMounted(() => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const accessToken = token.getToken(ACCESS_TOKEN_KEY);
   if (!accessToken) {
-    alert("토큰이 만료되었습니다.");
+    alert("접근 권한이 없습니다.");
     router.push("/signin");
   }
 });
