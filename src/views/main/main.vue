@@ -1,42 +1,58 @@
 <script setup lang="ts">
-
 import Header from "@/components/common/header/header.vue";
-import MainCharacter from "@/assets/images/main/character.vue"
+import MainCharacter from "@/assets/images/main/character.vue";
 import Portfolio from "@/assets/images/main/portfolio.svg";
 import Business from "@/assets/images/main/business.vue";
+import { ACCESS_TOKEN_KEY } from "@/constants/token/token.constant";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+
+onMounted(() => {
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  if (!accessToken) {
+    alert("토큰이 만료되었습니다.");
+    router.push("/signin");
+  }
+});
 </script>
 
 <template>
   <main>
-    <Header/>
+    <Header />
     <section class="banner contents">
       <div class="description">
         <div>
-          <p class="b_main">포트폴리오부터 면접까지,<br/>이젠 한번에</p>
+          <p class="b_main">포트폴리오부터 면접까지,<br />이젠 한번에</p>
           <p class="b_sub">깔끔한 포트폴리오 템플릿 및 맞춤형 면접 준비</p>
         </div>
-        <div>
-
-        </div>
+        <div></div>
       </div>
       <div>
-        <MainCharacter/>
+        <MainCharacter />
       </div>
     </section>
     <section class="contents portfolio">
       <div>
-        <p class="contents_main">더 쉽고 간편하게<br/>포트폴리오를 작성해보세요.</p>
-        <p class="contents_sub">미리 제공하는 포트폴리오 양식을 통해 포트폴리오를<br/>
-          보다 쉽게 작성하고 AI에게 피드백을 받아보세요!</p>
+        <p class="contents_main">
+          더 쉽고 간편하게<br />포트폴리오를 작성해보세요.
+        </p>
+        <p class="contents_sub">
+          미리 제공하는 포트폴리오 양식을 통해 포트폴리오를<br />
+          보다 쉽게 작성하고 AI에게 피드백을 받아보세요!
+        </p>
       </div>
-      <Portfolio class="floating"/>
+      <Portfolio class="floating" />
     </section>
     <section class="contents business">
-      <Business/>
+      <Business />
       <div>
         <p class="contents_main">면접 이제는 같이 준비해요!</p>
-        <p class="contents_sub">AI가 제공하는 면접 질문을 토대로 답변을 만들어<br/>면접 스킬을 향상시켜보세요!</p>
+        <p class="contents_sub">
+          AI가 제공하는 면접 질문을 토대로 답변을 만들어<br />면접 스킬을
+          향상시켜보세요!
+        </p>
       </div>
     </section>
   </main>
@@ -80,7 +96,6 @@ import Business from "@/assets/images/main/business.vue";
     color: var(--Static-White);
   }
 }
-
 
 .contents_main {
   @include Display2-Bold;

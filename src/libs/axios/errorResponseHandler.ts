@@ -56,7 +56,7 @@ const errorResponseHandler = async (error: AxiosError) => {
         } catch (error) {
           window.alert("세션이 만료되었습니다.");
           token.clearToken();
-          window.location.href = "/signup";
+          window.location.href = "/signin";
         }
       }
       return new Promise((resolve) => {
