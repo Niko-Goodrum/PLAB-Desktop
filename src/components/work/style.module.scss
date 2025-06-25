@@ -4,10 +4,10 @@
 .container {
   @include flex-column;
   width: 100%;
-  gap: 10px;
+  gap: 15px;
 
   p {
-    @include Label-Bold;
+    @include Body-Bold;
     color: var(--Label-Normal);
   }
 }

@@ -19,5 +19,11 @@
 
 .portfolio_editor {
   @include flex-column;
+  gap: 30px;
+}
+
+.project {
+  //width: 100%;
+  @include flex-column;
   gap: 20px;
 }

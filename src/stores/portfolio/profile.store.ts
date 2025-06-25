@@ -1,3 +1,4 @@
+// src/stores/portfolio/profile.store.ts
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -8,6 +9,8 @@ export const useProfileStore = defineStore("portfolio", () => {
     const imageFile = ref<File | null>(null);
     const image_url = ref<string>("");
     const wordmark = ref("");
+    const work = ref("");
+    const stack = ref<string[]>([]);
 
     const setImageUrl = (url: string) => {
         image_url.value = url;
@@ -20,6 +23,8 @@ export const useProfileStore = defineStore("portfolio", () => {
         imageFile,
         image_url,
         wordmark,
+        stack,
+        work,
         setImageUrl,
     };
 });

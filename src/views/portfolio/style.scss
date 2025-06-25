@@ -1,8 +1,14 @@
 @use "@/design/function/flex" as *;
 
 .portfolio-main {
-  @include flex-row;
+  display: flex;
   background-color: var(--Background-Neutral);
+
+  > * {
+    flex: 1;
+    max-width: 50%;
+    min-width: 0;
+  }
 }
 
 .divider {

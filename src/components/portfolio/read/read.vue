@@ -5,6 +5,10 @@ import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Sparkles from "@/components/icons/sparkles.vue";
 import Save from "@/components/icons/save.vue";
 import Download from "@/components/icons/download.vue";
+import {useProfileStore} from "@/stores/portfolio/profile.store.js";
+import {marked} from "marked";
+
+const store = useProfileStore();
 
 </script>
 
@@ -31,7 +35,21 @@ import Download from "@/components/icons/download.vue";
     </div>
     <div class="contents">
       <div class="about_me">
-
+        <div class="profile_box">
+          <img v-if="store.image_url" :src="store.image_url" alt="프로필 이미지" class="profile_image" />
+          <div class="text_info">
+            <p><strong>이름:</strong> {{ store.name }}</p>
+            <p><strong>전화번호:</strong> {{ store.phoneNumber }}</p>
+            <p><strong>이메일:</strong> {{ store.email }}</p>
+            <p><strong>직무:</strong> {{ store.work }}</p>
+            <p><strong>기술 스택:</strong></p>
+            <ul>
+              <li v-for="item in store.stack" :key="item">{{ item }}</li>
+            </ul>
+            <p><strong>워드마크:</strong></p>
+            <div v-html="marked(store.wordmark)" />
+          </div>
+        </div>
       </div>
     </div>
   </section>

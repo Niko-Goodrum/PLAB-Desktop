@@ -1,4 +1,3 @@
-import config from "@/config/config.json";
 import axios, { AxiosRequestConfig } from "axios";
 import token from "../token/token";
 import {
@@ -7,6 +6,8 @@ import {
 } from "@/constants/token/token.constant";
 import requestHandler from "./requestHandler";
 import errorResponseHandler from "./errorResponseHandler";
+
+const Plab_Server = import.meta.env.Plab_Server;
 
 const createAxiosInstance = (config: AxiosRequestConfig) => {
   const baseConfig: AxiosRequestConfig = {
@@ -22,7 +23,7 @@ const createAxiosInstance = (config: AxiosRequestConfig) => {
 };
 
 export const PlabAxios = createAxiosInstance({
-  baseURL: config.Plab_Server,
+  baseURL: Plab_Server,
   headers: {
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`!,
   },

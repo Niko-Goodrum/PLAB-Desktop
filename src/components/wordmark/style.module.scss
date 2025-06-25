@@ -3,12 +3,12 @@
 
 .container {
   width: 100%;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   @include flex-column;
 
   p {
-    @include Label-Bold;
+    @include Body-Bold;
     color: var(--Label-Normal);
   }
 }
