@@ -7,7 +7,7 @@ import {
 import requestHandler from "./requestHandler";
 import errorResponseHandler from "./errorResponseHandler";
 
-const Plab_Server = import.meta.env.Plab_Server;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const createAxiosInstance = (config: AxiosRequestConfig) => {
   const baseConfig: AxiosRequestConfig = {
@@ -23,7 +23,7 @@ const createAxiosInstance = (config: AxiosRequestConfig) => {
 };
 
 export const PlabAxios = createAxiosInstance({
-  baseURL: Plab_Server,
+  baseURL: SERVER_URL,
   headers: {
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`!,
   },

@@ -1,0 +1,9 @@
+@use "@/design/function/flex" as *;
+
+.interview {
+  @include flex-column;
+  width: 100vw;
+  height: 100vh;
+
+  overflow-y: hidden;
+}
