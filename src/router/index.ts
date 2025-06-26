@@ -19,14 +19,18 @@ const routes: Array<RouteRecordRaw> = [
     component: Signin,
   },
   {
+    path: "/portfolio",
+    component: Portfolio,
+  },
+  {
     path: "/interview",
     component: Interview,
   },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 });
 
 export default router;
