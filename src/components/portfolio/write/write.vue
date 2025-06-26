@@ -6,7 +6,8 @@ import styles from "./style.module.scss";
 import Work from "@/components/work/work.vue";
 import Stack from "@/components/portfolio/stack/stack.vue";
 import Career from "@/components/portfolio/career/career.vue";
-import {useProfileStore} from "@/stores/profile/profile.store.js";
+import Project from "@/components/portfolio/project/project.vue";
+import { useProfileStore } from "@/stores/profile/profile.store.js";
 
 const store = useProfileStore();
 </script>
@@ -24,6 +25,7 @@ const store = useProfileStore();
       <div :class="styles.project">
         <p :class="styles.project_title">프로젝트 · 경력</p>
         <Career />
+        <Project />
       </div>
     </div>
   </section>

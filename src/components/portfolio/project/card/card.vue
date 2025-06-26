@@ -8,19 +8,39 @@ import Stack from "@/components/portfolio/stack/stack.vue";
 import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Trash from "@/components/icons/trash.vue";
 import styles from "./style.module.scss";
-import { CareerItem } from "@/types/career/career.type.js";
+import { ProjectItem } from "@/types/project/project.type";
+import Plus from "@/components/icons/plus.vue";
 
 const props = defineProps<{
-  item: CareerItem;
+  item: ProjectItem;
   onRemove: () => void;
+}>();
+
+const emit = defineEmits<{
+  (e: "updateImg", id: string, url: string): void;
 }>();
 
 const isCollapsed = ref(false);
 const contentRef = ref<HTMLElement | null>(null);
+const imageUrl = ref<string | null>(null);
+const fileInput = ref<HTMLInputElement | null>(null);
 
 const contentHeight = computed(() =>
   isCollapsed.value ? "0px" : `${contentRef.value?.scrollHeight || 0}px`
 );
+
+const triggerFileInput = () => {
+  fileInput.value?.click();
+};
+
+const handleFileChange = (e: Event) => {
+  const file = (e.target as HTMLInputElement).files?.[0];
+  if (file) {
+    const url = URL.createObjectURL(file);
+    imageUrl.value = url;
+    emit("updateImg", props.item.id, url);
+  }
+};
 </script>
 
 <template>
@@ -49,23 +69,19 @@ const contentHeight = computed(() =>
         overflow: 'hidden',
         transition: 'max-height 0.4s ease',
       }">
-      <TextField
-        v-model="item.name"
-        label="회사명"
-        placeholder="회사명을 입력해주세요." />
       <div :class="styles.group">
         <TextField
-          v-model="item.affiliation"
-          label="부서명"
-          placeholder="소속 부서 또는 팀명을 입력해주세요." />
+          v-model="item.name"
+          label="프로젝트명"
+          placeholder="프로젝트명을 입력해주세요." />
         <TextField
           v-model="item.position"
-          label="포지션"
-          placeholder="담당 포지션을 입력해주세요" />
+          label="담당 역할"
+          placeholder="담당 역할을 입력해주세요" />
       </div>
 
       <div :class="styles.date">
-        <p>재직 기간</p>
+        <p>프로젝트 기간</p>
         <div :class="styles.time">
           <FilledTextField
             v-model="item.start"
@@ -93,6 +109,41 @@ const contentHeight = computed(() =>
         v-model="item.stack"
         :show-label="false"
         sub-label="사용한 기술 스택" />
+
+      <div :class="styles.url">
+        <div :class="styles.urlTop">
+          <p :class="styles.urlTitle">url</p>
+        </div>
+        <div :class="styles.urlBottom">
+          <FilledTextField
+            v-model="item.url"
+            type="text"
+            :value="item.url"
+            :text="'링크'"
+            :placeholder="'https://'"
+            :width="'100%'"
+            :isLabel="true" />
+        </div>
+      </div>
+
+      <div :class="styles.img">
+        <div :class="styles.imgTop">
+          <p :class="styles.imgTitle">이미지</p>
+          <p :class="styles.imgSubTitle">579 X 327</p>
+        </div>
+        <div :class="styles.preview" @click="triggerFileInput">
+          <img v-if="imageUrl" :src="imageUrl" :class="styles.previewImg" />
+          <div v-else :class="styles.default">
+            <Plus :color="'staticBlack'" />
+          </div>
+        </div>
+        <input
+          type="file"
+          ref="fileInput"
+          accept="image/*"
+          @change="handleFileChange"
+          style="display: none" />
+      </div>
     </div>
   </div>
 </template>
