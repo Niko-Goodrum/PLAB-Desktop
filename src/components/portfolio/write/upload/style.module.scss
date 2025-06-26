@@ -1,4 +1,5 @@
 @use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
 
 .imageUploader {
   @include flex-column;

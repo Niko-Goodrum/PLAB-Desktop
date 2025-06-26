@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useProfileStore } from "@/stores/profile/profile.store";
+import { useProfileStore } from "@/stores/profile/profile.store.js";
 import styles from "./style.module.scss";
 import FilledTextField from "@/components/ui/textFeield/filledTextField/filledTextField.vue";
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useProfileStore } from "@/stores/profile/profile.store.js";
 import TextField from "@/components/ui/textFeield/textField/textField.vue";
-import Upload from "@/components/upload/upload.vue";
+import Upload from "@/components/portfolio/write/upload/upload.vue";
 import styles from "./style.module.scss";
 
 const store = useProfileStore();
