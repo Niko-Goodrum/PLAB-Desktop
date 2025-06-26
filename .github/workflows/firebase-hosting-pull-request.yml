@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
         env:
-          VITE_Plab_Server: ${{ secrets.VITE_Plab_Server }}
+          VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
