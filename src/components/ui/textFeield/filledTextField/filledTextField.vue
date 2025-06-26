@@ -37,8 +37,9 @@ const handleChangeInput = (e: Event) => {
     :class="[
       'filled-text-field',
       { 'filled-text-field--disabled': isDisabled },
-    ]">
-    <p class="filled-text-field-label" v-if="isLabel ? isLabel : true">
+    ]"
+    :style="{ width: width || '250px' }">
+    <p class="filled-text-field-label" v-if="isLabel || false">
       {{ text ? text : "Text" }}
     </p>
     <div
@@ -48,8 +49,7 @@ const handleChangeInput = (e: Event) => {
           'filled-text-field-input--focused': isFocused,
           'filled-text-field-input--error': isError,
         },
-      ]"
-      :style="{ width: width ? width : '250px' }">
+      ]">
       <input
         :type="type === 'text' ? 'text' : inputType"
         :disabled="isDisabled"
