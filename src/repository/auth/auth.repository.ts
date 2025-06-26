@@ -5,8 +5,6 @@ import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-console.log("VITE_SERVER_URL:", import.meta.env.VITE_SERVER_URL);
-
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
     const { data } = await axios.post(`${SERVER_URL}/auth/signup`, params);
