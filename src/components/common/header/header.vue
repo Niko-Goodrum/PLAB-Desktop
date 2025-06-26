@@ -21,8 +21,8 @@ const themeStore = useThemeStore();
     <div class="button_container">
       <div class="auth_container">
         <!--Onclick은 추후에 수정-->
-        <Button size="Medium" color="Primary" :on-click="() => console.log('Hello World')">로그인하기</Button>
-        <Button size="Medium" :line="true" :on-click="() => console.log('Hello World')">회원가입하기</Button>
+        <!-- <Button size="Medium" color="Primary" :on-click="() => console.log('Hello World')">로그인하기</Button>
+        <Button size="Medium" :line="true" :on-click="() => console.log('Hello World')">회원가입하기</Button> -->
       </div>
       <div class="theme_toggle" @click="themeStore.toggleTheme">
         <transition name="fade-icon" mode="out-in">
