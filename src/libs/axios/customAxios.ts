@@ -1,4 +1,3 @@
-import config from "@/config/config.json";
 import axios, { AxiosRequestConfig } from "axios";
 import token from "../token/token";
 import {
