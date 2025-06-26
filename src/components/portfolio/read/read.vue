@@ -8,6 +8,7 @@ import Download from "@/components/icons/download.vue";
 import Profile from "@/components/portfolio/read/profile/profile.vue";
 import { usePdf } from "@/composables/pdf/usePdf";
 import Divider from "@/components/divider/divider.vue";
+import Career from "@/components/portfolio/read/career/career.vue";
 
 const { exportPdf } = usePdf();
 </script>
@@ -52,6 +53,7 @@ const { exportPdf } = usePdf();
     <div :class="styles.contents" id="pdf-area">
       <Profile />
       <Divider />
+      <Career />
     </div>
   </section>
 </template>
