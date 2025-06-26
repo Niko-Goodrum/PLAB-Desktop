@@ -36,8 +36,10 @@ const handleClickSubmit = () => {
   postSignin.mutate(value.value, {
     onSuccess: (data: SigninResponse) => {
       isError.value = false;
+
       token.setToken(ACCESS_TOKEN_KEY, data.data.access_token);
       token.setToken(REFRESH_TOKEN_KEY, data.data.refresh_token);
+
       showToast("success", "로그인 성공");
       router.push("/");
     },
@@ -58,7 +60,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.email"
           :type="'text'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'이메일'"
@@ -67,7 +70,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.password"
           :type="'password'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'비밀번호'"

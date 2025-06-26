@@ -1,4 +1,4 @@
-import cookie from "../cookie/cookie.js";
+import session from "@/libs/session/session.js";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
@@ -6,16 +6,16 @@ import {
 
 class Token {
   public getToken(key: string) {
-    return cookie.getCookie(key);
+    return session.getToken(key);
   }
 
   public setToken(key: string, value: string) {
-    cookie.setCookie(key, value);
+    session.setToken(key, value);
   }
 
   public clearToken() {
-    cookie.removeCookie(ACCESS_TOKEN_KEY);
-    cookie.removeCookie(REFRESH_TOKEN_KEY);
+    session.removeToken(ACCESS_TOKEN_KEY);
+    session.removeToken(REFRESH_TOKEN_KEY);
   }
 }
 
