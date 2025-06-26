@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import {ProjectItem} from "@/types/project/project.type.js";
+import {ProjectItem} from "@/types/career/career.type.js";
 
-export const useProjectStore = defineStore("project", () => {
+export const useProjectStore = defineStore("career", () => {
     const projects = ref<ProjectItem[]>([]);
 
     const addProject = () => {

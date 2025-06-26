@@ -1,4 +1,4 @@
-export interface ProjectItem {
+export interface CareerItem {
     id: string;
     name: string;
     affiliation: string;

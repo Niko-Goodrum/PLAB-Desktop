@@ -8,10 +8,10 @@ import Stack from "@/components/portfolio/stack/stack.vue";
 import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Trash from "@/components/icons/trash.vue";
 import styles from "./style.module.scss";
-import {ProjectItem} from "@/types/project/project.type.js";
+import {CareerItem} from "@/types/career/career.type.js";
 
 const props = defineProps<{
-  item: ProjectItem
+  item: CareerItem
   onRemove: () => void
 }>();
 

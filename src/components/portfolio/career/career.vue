@@ -2,10 +2,10 @@
 import { ref } from "vue";
 import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Plus from "@/components/icons/plus.vue";
-import ProjectCard from "@/components/portfolio/project/card/card.vue";
-import type { ProjectItem } from "@/types/project/project.type";
+import CareerCard from "@/components/portfolio/career/card/card.vue";
+import type { CareerItem } from "@/types/career/career.type.js";
 
-const projectList = ref<ProjectItem[]>([
+const careerList = ref<CareerItem[]>([
   {
     id: "server-generated-id-1",
     name: "",
@@ -18,8 +18,8 @@ const projectList = ref<ProjectItem[]>([
   }
 ]);
 
-const addProject = () => {
-  projectList.value.push({
+const addCareer = () => {
+  careerList.value.push({
     id: `server-generated-id-${Math.random().toString(36).slice(2)}`, // 실제로는 서버로부터 받아야 함
     name: "",
     affiliation: "",
@@ -31,8 +31,8 @@ const addProject = () => {
   });
 };
 
-const removeProject = (id: string) => {
-  projectList.value = projectList.value.filter((project) => project.id !== id);
+const removeCareer = (id: string) => {
+  careerList.value = careerList.value.filter((career) => career.id !== id);
 };
 </script>
 
@@ -45,17 +45,17 @@ const removeProject = (id: string) => {
           bg-color="var(--Primary-Normal)"
           text-color="var(--Static-White)"
           :use-border="false"
-          @click="addProject"
+          @click="addCareer"
       >
         경력 추가
       </IconButton>
     </div>
 
-    <ProjectCard
-        v-for="project in projectList"
-        :key="project.id"
-        :item="project"
-        :on-remove="() => removeProject(project.id)"
+    <CareerCard
+        v-for="career in careerList"
+        :key="career.id"
+        :item="career"
+        :on-remove="() => removeCareer(career.id)"
     />
   </div>
 </template>

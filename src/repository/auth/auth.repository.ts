@@ -1,13 +1,14 @@
 import axios from "axios";
-import config from "@/config/config.json";
 import { Response } from "@/types/util/response";
 import { SigninResponse, RefreshResponse } from "@/types/auth/auth.type";
 import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
+const Plab_Server = import.meta.env.Plab_Server;
+
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
     const { data } = await axios.post(
-      `${config.Plab_Server}/auth/signup`,
+      `${Plab_Server}/auth/signup`,
       params
     );
 
@@ -16,7 +17,7 @@ class AuthRepository {
 
   public async postSignin(params: SigninParams): Promise<SigninResponse> {
     const { data } = await axios.post(
-      `${config.Plab_Server}/auth/signin`,
+      `${Plab_Server}/auth/signin`,
       params
     );
 
