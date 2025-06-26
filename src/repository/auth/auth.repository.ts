@@ -5,7 +5,7 @@ import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-console.log("VITE_SERVER_URL:", SERVER_URL); // 확인용 콘솔
+console.log("요청 URL:", `${SERVER_URL}/auth/signup`);
 
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
