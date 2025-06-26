@@ -30,50 +30,11 @@
 
   .contents {
     @include flex-column;
-    height: 100%;
     padding: 30px;
+    gap: 30px;
     background-color: var(--Background-Normal);
     border: 1px solid var(--Line-Normal);
     border-radius: var(--Shape-Small);
 
-    .about_me {
-      @include flex-row;
-
-      .profileBox {
-        @include flex-row;
-        gap: 20px;
-        width: 100%;
-
-        .profileImage {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: var(--Shape-Circle);
-        }
-
-        .textInfo {
-          @include flex-column;
-          gap: 8px;
-
-          ul,
-          ol {
-            margin-left: 20px;
-            padding-left: 20px;
-          }
-
-          ul {
-            list-style-type: disc;
-          }
-
-          ol {
-            list-style-type: decimal;
-          }
-
-          li {
-            margin-bottom: 4px;
-          }
-        }
-      }
-    }
   }
 }

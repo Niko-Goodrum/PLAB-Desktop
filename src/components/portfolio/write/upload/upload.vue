@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { useUploader } from "@/composables/upload/useUpload";
-import { useProfileStore } from "@/stores/profile/profile.store";
+import { useUploader } from "@/composables/upload/useUpload.js";
+import { useProfileStore } from "@/stores/profile/profile.store.js";
 import Pen from "@/components/icons/pen.vue";
 import Trash from "@/components/icons/trash.vue";
 import styles from "./style.module.scss";

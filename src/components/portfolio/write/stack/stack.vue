@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import styles from "./style.module.scss";
-import Search from "@/components/portfolio/search/search.vue";
-import Xmark from "@/components/icons/xmark.vue";
+import { ref, computed, onMounted } from 'vue'
+import styles from './style.module.scss'
+import Search from "@/components/portfolio/write/search/search.vue"
+import Xmark from "@/components/icons/xmark.vue"
 
 const props = defineProps<{
   modelValue: string[];

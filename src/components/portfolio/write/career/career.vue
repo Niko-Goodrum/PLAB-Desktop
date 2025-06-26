@@ -3,7 +3,7 @@ import { ref } from "vue";
 import styles from "./style.module.scss";
 import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Plus from "@/components/icons/plus.vue";
-import CareerCard from "@/components/portfolio/career/card/card.vue";
+import CareerCard from "@/components/portfolio/write/career/card/card.vue";
 import type { CareerItem } from "@/types/career/career.type.js";
 
 const careerList = ref<CareerItem[]>([

@@ -1,6 +1,5 @@
 @use "@/design/function/flex" as *;
 @use "@/design/fonts/typography" as *;
-
 .project {
   @include flex-column;
   padding: 20px;
