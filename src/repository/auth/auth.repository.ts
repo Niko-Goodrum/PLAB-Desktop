@@ -3,30 +3,23 @@ import { Response } from "@/types/util/response";
 import { SigninResponse, RefreshResponse } from "@/types/auth/auth.type";
 import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
-const Plab_Server = import.meta.env.VITE_Plab_Server;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
-    const { data } = await axios.post(
-      `${Plab_Server}/auth/signup`,
-      params
-    );
+    const { data } = await axios.post(`${SERVER_URL}/auth/signup`, params);
     return data;
   }
 
   public async postSignin(params: SigninParams): Promise<SigninResponse> {
-    const { data } = await axios.post(
-      `${Plab_Server}/auth/signin`,
-      params
-    );
+    const { data } = await axios.post(`${SERVER_URL}/auth/signin`, params);
     return data;
   }
 
-  public async postRefreshToken(params: RefreshParams): Promise<RefreshResponse> {
-    const { data } = await axios.post(
-      `${Plab_Server}/auth/refresh`,
-      params
-    );
+  public async postRefreshToken(
+    params: RefreshParams
+  ): Promise<RefreshResponse> {
+    const { data } = await axios.post(`${SERVER_URL}/auth/refresh`, params);
     return data;
   }
 }

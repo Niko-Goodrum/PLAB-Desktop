@@ -1,7 +1,7 @@
 type inputType = "text" | "password";
 
 export interface FilledTextFieldProps {
-  modelValue: string;
+  value: string;
   type: inputType;
   text?: string;
   width?: string;

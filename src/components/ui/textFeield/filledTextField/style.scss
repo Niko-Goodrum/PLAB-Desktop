@@ -3,8 +3,9 @@
 
 .filled-text-field {
   @include flex-column;
+
+  width: min-content;
   gap: 10px;
-  width: 100%;
 
   &--disabled {
     opacity: 0.5;
@@ -19,7 +20,6 @@
   &-input {
     @include flex-row;
     align-items: center;
-    width: 100%;
 
     border: 1px solid var(--Line-Normal);
     border-radius: var(--Shape-ExtraSmall);
