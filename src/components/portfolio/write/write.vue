@@ -24,6 +24,7 @@ const store = useProfileStore();
       <div :class="styles.project">
         <p :class="styles.project_title">프로젝트 · 경력</p>
         <Career />
+        <Project />
       </div>
     </div>
   </section>
