@@ -11,6 +11,7 @@ node_modules/
 .vscode/
 config/
 config.json
+.env
 
 # Thumbnails
 ._*
@@ -162,3 +163,4 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/vue,webstorm,macos
 
 .env
+.env.*
