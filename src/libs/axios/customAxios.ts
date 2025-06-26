@@ -7,7 +7,7 @@ import {
 import requestHandler from "./requestHandler";
 import errorResponseHandler from "./errorResponseHandler";
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_Plab_Server;
 
 const createAxiosInstance = (config: AxiosRequestConfig) => {
   const baseConfig: AxiosRequestConfig = {

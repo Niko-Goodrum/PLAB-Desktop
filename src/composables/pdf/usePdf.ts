@@ -36,7 +36,7 @@ export const usePdf = () => {
             heightLeft -= pdfHeight
         }
 
-        pdf.save('profile.pdf')
+        pdf.save("Plab's Portfolio.pdf")
     }
 
     return { exportPdf }

@@ -37,6 +37,8 @@
 
 .editor {
   @include Label-Medium;
+  white-space: pre-wrap;
+  word-break: break-word;
   min-height: 180px;
   padding: 20px;
   outline: none;
@@ -48,8 +50,13 @@
     pointer-events: none;
   }
 
-  ul,
-  ol {
-    margin-left: 20px;
+  ul, ol {
+    padding-left: 1.2em;
+    list-style-position: inside;
+  }
+
+  li {
+    line-height: 1.5;
+    word-break: break-word;
   }
 }

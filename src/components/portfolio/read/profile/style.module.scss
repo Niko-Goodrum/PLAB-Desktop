@@ -1,0 +1,103 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.about_me {
+  width: 100%;
+  @include flex-column;
+  gap: 20px;
+
+  .info_wrap {
+    @include flex-column;
+    gap: 10px;
+  }
+
+  .info_container {
+    @include flex-between;
+
+    .name_section {
+      @include flex-column;
+
+      .name {
+        @include Title2-Bold;
+        color: var(--Label-Strong);
+      }
+
+      .work {
+        @include HeadLine2-Bold;
+        color: var(--Label-Assistive);
+      }
+    }
+
+    .information {
+      @include flex-column;
+      padding: 5px 0;
+      gap: 5px;
+
+      .information_container {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+
+        .title {
+          @include Body-Bold;
+          color: var(--Label-Normal);
+        }
+
+        .infor {
+          @include Body-Medium;
+          color: var(--Label-Normal);
+        }
+      }
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+
+  }
+}
+
+.introduction {
+  @include flex-column;
+  gap: 5px;
+  .title {
+    @include Body-Bold;
+    color: var(--Label-Normal);
+  }
+
+  .intro {
+    @include Label-Medium;
+    color: var(--Label-Normal);
+  }
+}
+
+.skill {
+  @include flex-column;
+  gap: 20px;
+
+  .title {
+    @include Body-Bold;
+    color: var(--Label-Normal);
+  }
+
+  .skill_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill_item {
+    @include flex-center;
+    padding: 5px 8px;
+    background-color: var(--Fill-Normal);
+    border-radius: 4px;
+    @include Caption1-Bold;
+    color: var(--Label-Neutral);
+    white-space: nowrap;
+  }
+}
