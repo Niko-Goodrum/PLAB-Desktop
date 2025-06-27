@@ -1,0 +1,44 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.searchBar {
+  @include flex-center;
+  width: 100%;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid var(--Line-Normal);
+  border-radius: var(--Shape-ExtraSmall);
+  background-color: var(--Background-Normal);
+  transition: border 0.2s;
+
+  input {
+    border: none;
+    outline: none;
+    @include Body-Medium;
+    width: 100%;
+    background-color: transparent;
+
+    &::placeholder {
+      color: var(--Label-Assistive);
+    }
+  }
+}
+
+.focus {
+  border-color: var(--Primary-Normal);
+}
+
+.error {
+  border-color: var(--Status-Error);
+}
+
+.disabled {
+  background-color: var(--Background-Normal);
+  color: var(--Label-Assistive);
+
+  input {
+    background-color: transparent;
+    color: var(--Label-Assistive);
+    cursor: not-allowed;
+  }
+}

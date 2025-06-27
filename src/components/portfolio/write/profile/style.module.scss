@@ -1,0 +1,36 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.profile {
+  width: 100%;
+  gap: 20px;
+  @include flex-column;
+}
+
+.title {
+  color: var(--Label-Strong);
+  @include HeadLine1-Bold;
+  @include flex-left;
+}
+
+.profileContent {
+  @include flex-between;
+  gap: 30px;
+
+  .enterInformation {
+    width: 100%;
+    @include flex-column;
+    gap: 30px;
+
+    .upInformation {
+      width: 100%;
+      display: flex;
+      gap: 30px;
+    }
+  }
+}
+
+.imageSection {
+  display: flex;
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
-console.log("ServerURL:", import.meta.env.VITE_SERVER_URL);
+import "@/design/global.scss";
 </script>
 
 <template>
@@ -9,6 +9,4 @@ console.log("ServerURL:", import.meta.env.VITE_SERVER_URL);
 </template>
 
 <style scoped lang="scss">
-@use "@/design/global";
-@use "@/design/color/sementic" as *;
 </style>

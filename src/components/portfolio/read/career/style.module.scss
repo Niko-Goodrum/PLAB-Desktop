@@ -1,0 +1,83 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.container {
+  @include flex-column;
+  gap: 20px;
+
+  .main_title {
+    @include Body-Bold;
+    color: var(--Label-Normal);
+  }
+
+  .career {
+    @include flex-column;
+    gap: 50px;
+
+    .introduce {
+      display: flex;
+      align-items: end;
+      gap: 15px;
+
+      .name {
+        @include Body-Bold;
+        color: var(--Label-Normal);
+      }
+
+      .date {
+        @include Label-Bold;
+        color: var(--Label-Assistive);
+      }
+    }
+  }
+
+  .description {
+    @include flex-column;
+    gap: 10px;
+
+    .section {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      align-items: flex-start;
+
+      .title {
+        width: 60px;
+        padding-top: 2px;
+      }
+
+      .stack_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .stack_item {
+            @include flex-center;
+            padding: 5px 8px;
+            background-color: var(--Fill-Normal);
+            border-radius: 4px;
+            @include Caption1-Bold;
+            color: var(--Label-Neutral);
+            white-space: nowrap;
+        }
+      }
+    }
+
+    .span {
+      width: 100%;
+      .text {
+        @include Label-Medium;
+        color: var(--Label-Normal);
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+    }
+
+    .text {
+      @include Label-Bold;
+      color: var(--Label-Normal);
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+  }
+}

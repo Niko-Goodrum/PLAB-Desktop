@@ -7,14 +7,14 @@ defineProps<ButtonProps>();
 
 <template>
   <button
-    :class="[
+      :class="[
       'btn',
       `btn--${size}`,
       `btn--${color}`,
       line ? 'btn--outline' : 'btn--filled',
     ]"
-    :style="customStyle"
-    @click="onClick">
+      :style="customStyle"
+      @click="onClick">
     <slot />
   </button>
 </template>

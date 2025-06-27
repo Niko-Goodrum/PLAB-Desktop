@@ -1,0 +1,28 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.banner {
+  display: flex;
+  background-color: var(--Primary-Normal);
+  width: 100%;
+  padding: 15px 30px;
+  gap: 30px;
+  border-radius: var(--Shape-Small);
+
+  .banner_contents {
+    @include flex-column;
+    color: var(--Static-White);
+    gap: 2px;
+    p {
+      margin: 0;
+    }
+
+    .banner_title {
+      @include Title2-Bold;
+    }
+
+    .banner_description {
+      @include Body-Bold;
+    }
+  }
+}

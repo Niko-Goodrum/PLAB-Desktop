@@ -1,0 +1,64 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+.project {
+  @include flex-column;
+  padding: 20px;
+  width: 100%;
+  gap: 30px;
+  border-radius: var(--Shape-Medium);
+  border: 1px solid var(--Line-Normal);
+}
+
+.drop {
+  width: 100%;
+  @include flex-between;
+  cursor: pointer;
+
+  span {
+    @include Label-Bold;
+    color: var(--Label-Normal);
+  }
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.collapsed {
+  transform: rotate(180deg);
+}
+
+.projectContent {
+  @include flex-column;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+}
+
+.date {
+  @include flex-column;
+  width: 100%;
+  gap: 10px;
+
+  p {
+    @include Caption1-Bold;
+    color: var(--Label-Normal);
+  }
+
+  .time {
+    @include flex-center;
+    gap: 10px;
+    width: 100%;
+
+    span {
+      @include Label-Medium;
+      color: var(--Label-Assistive);
+    }
+  }
+}

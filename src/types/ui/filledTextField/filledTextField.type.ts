@@ -1,9 +1,7 @@
-import { VueElement } from "vue";
-
 type inputType = "text" | "password";
 
 export interface FilledTextFieldProps {
-  value: string;
+  modelValue: string;
   type: inputType;
   text?: string;
   width?: string;

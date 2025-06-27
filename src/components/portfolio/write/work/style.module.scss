@@ -1,0 +1,13 @@
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
+.container {
+  @include flex-column;
+  width: 100%;
+  gap: 15px;
+
+  p {
+    @include Body-Bold;
+    color: var(--Label-Normal);
+  }
+}

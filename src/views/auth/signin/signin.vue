@@ -33,24 +33,17 @@ const handleClickSubmit = () => {
   if (isDisabled.value) return;
   isDisabled.value = true;
 
-  console.log("로그인 시도:", value.value);
-
   postSignin.mutate(value.value, {
     onSuccess: (data: SigninResponse) => {
-      console.log("로그인 성공 응답:", data);
       isError.value = false;
 
       token.setToken(ACCESS_TOKEN_KEY, data.data.access_token);
       token.setToken(REFRESH_TOKEN_KEY, data.data.refresh_token);
 
-      console.log("액세스 토큰 저장됨:", token.getToken(ACCESS_TOKEN_KEY));
-      console.log("리프레시 토큰 저장됨:", token.getToken(REFRESH_TOKEN_KEY));
-
       showToast("success", "로그인 성공");
       router.push("/");
     },
-    onError: (error) => {
-      console.error("로그인 실패 응답:", error);
+    onError: () => {
       showToast("error", "로그인 실패");
       isError.value = true;
       isDisabled.value = false;
@@ -67,7 +60,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.email"
           :type="'text'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'이메일'"
@@ -76,7 +70,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.password"
           :type="'password'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'비밀번호'"

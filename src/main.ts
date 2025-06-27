@@ -19,13 +19,13 @@ const themeStore = useThemeStore();
 themeStore.initTheme();
 
 const vueQueryPluginOptions: VueQueryPluginOptions = {
-  queryClientConfig: {
-    defaultOptions: {
-      queries: {
-        staleTime: 1000 * 60 * 60,
-      },
+    queryClientConfig: {
+        defaultOptions: {
+            queries: {
+                staleTime: 1000 * 60 * 60,
+            },
+        },
     },
-  },
 };
 app.use(VueQueryPlugin, vueQueryPluginOptions);
 

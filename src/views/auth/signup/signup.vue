@@ -51,7 +51,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.username"
           :type="'text'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'이름'"
@@ -60,7 +61,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.email"
           :type="'text'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'이메일'"
@@ -69,7 +71,8 @@ const handleClickSubmit = () => {
         <FilledTextField
           v-model="value.password"
           :type="'password'"
-          :width="'285px'"
+          :width="'320px'"
+          :isLabel="true"
           :isDisabled="isDisabled"
           :isError="isError"
           :text="'비밀번호'"
