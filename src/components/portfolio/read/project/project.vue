@@ -46,12 +46,14 @@ const {projectList} = storeToRefs(projectStore);
         </div>
 
         <div :class="styles.section">
-          <div>
+          <div :class="styles.title">
             <span :class="styles.text">기술 스택</span>
           </div>
-          <span :class="styles.stack">
-            {{ project.stack.length ? project.stack.join(', ') : '' }}
-          </span>
+          <div :class="styles.stack_list">
+            <div v-for="item in project.stack" :key="item" :class="styles.stack_item">
+              {{ item }}
+            </div>
+          </div>
         </div>
 
         <div :class="styles.section" v-if="project.image_url">

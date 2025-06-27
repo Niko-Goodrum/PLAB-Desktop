@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import styles from "./style.module.scss";
-import {useCareerStore} from "@/stores/career/career.js";
+import {useCareerStore} from "@/stores/career/career.store.js";
 
 const store = useCareerStore();
 </script>
@@ -41,12 +41,14 @@ const store = useCareerStore();
         </div>
 
         <div :class="styles.section">
-          <div>
+          <div :class="styles.title">
             <span :class="styles.text">기술 스택</span>
           </div>
-          <span :class="styles.stack">
-            {{ career.stack.length ? career.stack.join(', ') : '' }}
-          </span>
+          <div :class="styles.stack_list">
+            <div v-for="item in career.stack" :key="item" :class="styles.stack_item">
+              {{ item }}
+            </div>
+          </div>
         </div>
       </div>
     </div>

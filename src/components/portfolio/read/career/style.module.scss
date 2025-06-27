@@ -45,6 +45,22 @@
         width: 60px;
         padding-top: 2px;
       }
+
+      .stack_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .stack_item {
+            @include flex-center;
+            padding: 5px 8px;
+            background-color: var(--Fill-Normal);
+            border-radius: 4px;
+            @include Caption1-Bold;
+            color: var(--Label-Neutral);
+            white-space: nowrap;
+        }
+      }
     }
 
     .span {
@@ -64,4 +80,16 @@
       white-space: pre-wrap;
     }
   }
+}
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.previewImg {
+  width: 160px;
+  height: auto;
 }
