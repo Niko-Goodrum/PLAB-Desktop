@@ -10,8 +10,9 @@ import { usePdf } from "@/composables/pdf/usePdf";
 import Divider from "@/components/divider/divider.vue";
 import Career from "@/components/portfolio/read/career/career.vue";
 import Project from "@/components/portfolio/read/project/project.vue";
-import {useCareerStore} from "@/stores/career/career.js";
-import {useProjectStore} from "@/stores/project/project.store.js";
+import {useCareerStore} from "@/stores/career/career.store";
+import {useProjectStore} from "@/stores/project/project.store";
+import Education from "@/components/portfolio/read/education/education.vue";
 
 const { exportPdf } = usePdf();
 const career = useCareerStore();
@@ -60,6 +61,7 @@ const project = useProjectStore();
       <Divider />
       <Career v-if="career.careerList.length > 0" />
       <Project v-if="project.projectList.length > 0" />
+      <Education />
     </div>
   </section>
 </template>

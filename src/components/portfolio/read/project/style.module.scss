@@ -66,6 +66,22 @@
       white-space: pre-wrap;
     }
 
+    .stack_list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .stack_item {
+        @include flex-center;
+        padding: 5px 8px;
+        background-color: var(--Fill-Normal);
+        border-radius: 4px;
+        @include Caption1-Bold;
+        color: var(--Label-Neutral);
+        white-space: nowrap;
+      }
+    }
+
     .image {
       max-width: 100%;
       height: auto;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import styles from "./style.module.scss"
-import { useCareerStore } from "@/stores/career/career.js";
+import { useCareerStore } from "@/stores/career/career.store.js";
 import IconButton from "@/components/ui/button/icon/iconButton.vue";
 import Plus from "@/components/icons/plus.vue";
 import CareerCard from "@/components/portfolio/write/career/card/card.vue";

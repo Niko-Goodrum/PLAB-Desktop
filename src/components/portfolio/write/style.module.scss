@@ -10,6 +10,7 @@
 }
 
 .contents {
+  overflow-y: auto;
   @include flex-column;
   width: 100%;
   height: 100%;
