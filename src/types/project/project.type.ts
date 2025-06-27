@@ -7,5 +7,5 @@ export interface ProjectItem {
   work: string;
   stack: string[];
   url: string;
-  img: string;
+  image_url: string;
 }

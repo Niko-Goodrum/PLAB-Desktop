@@ -88,7 +88,7 @@ const handleFileChange = (e: Event) => {
             type="text"
             :width="'100%'"
             :value="item.start"
-            placeholder="입사 (YYYY.MM)"
+            placeholder="(YYYY.MM)"
             :isLabel="false" />
           <span>~</span>
           <FilledTextField
@@ -96,7 +96,7 @@ const handleFileChange = (e: Event) => {
             type="text"
             :width="'100%'"
             :value="item.end"
-            placeholder="퇴사 (YYYY.MM)"
+            placeholder="(YYYY.MM)"
             :isLabel="false" />
         </div>
       </div>

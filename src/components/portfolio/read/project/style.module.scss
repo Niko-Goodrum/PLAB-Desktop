@@ -1,6 +1,9 @@
 @use "@/design/function/flex" as *;
 @use "@/design/fonts/typography" as *;
 
+@use "@/design/function/flex" as *;
+@use "@/design/fonts/typography" as *;
+
 .container {
   @include flex-column;
   gap: 20px;
@@ -46,9 +49,9 @@
         padding-top: 2px;
       }
     }
-
     .span {
       width: 100%;
+
       .text {
         @include Label-Medium;
         color: var(--Label-Normal);
@@ -56,12 +59,17 @@
         white-space: pre-wrap;
       }
     }
-
     .text {
       @include Label-Bold;
       color: var(--Label-Normal);
       word-break: break-word;
       white-space: pre-wrap;
+    }
+
+    .image {
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
     }
   }
 }

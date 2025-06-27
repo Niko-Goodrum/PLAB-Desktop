@@ -9,8 +9,13 @@ import Profile from "@/components/portfolio/read/profile/profile.vue";
 import { usePdf } from "@/composables/pdf/usePdf";
 import Divider from "@/components/divider/divider.vue";
 import Career from "@/components/portfolio/read/career/career.vue";
+import Project from "@/components/portfolio/read/project/project.vue";
+import {useCareerStore} from "@/stores/career/career.js";
+import {useProjectStore} from "@/stores/project/project.store.js";
 
 const { exportPdf } = usePdf();
+const career = useCareerStore();
+const project = useProjectStore();
 </script>
 
 <template>
@@ -53,7 +58,8 @@ const { exportPdf } = usePdf();
     <div :class="styles.contents" id="pdf-area">
       <Profile />
       <Divider />
-      <Career />
+      <Career v-if="career.careerList.length > 0" />
+      <Project v-if="project.projectList.length > 0" />
     </div>
   </section>
 </template>

@@ -12,7 +12,7 @@
   width: 100%;
 
   .title {
-    @include Body-Bold;
+    @include Label-Bold;
     color: var(--Label-Normal);
   }
 }

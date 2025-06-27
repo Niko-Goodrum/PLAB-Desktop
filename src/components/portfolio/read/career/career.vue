@@ -7,6 +7,7 @@ const store = useCareerStore();
 
 <template>
   <div :class="styles.container">
+    <p :class="styles.main_title">경력</p>
     <div
         v-for="career in store.careerList"
         :key="career.id"
@@ -35,8 +36,6 @@ const store = useCareerStore();
         <div :class="styles.section">
           <div :class="styles.title">
             <span :class="styles.text">주요 업무</span>
-          </div>
-          <div :class="styles.span">
             <span :class="styles.text">{{ career.work }}</span>
           </div>
         </div>

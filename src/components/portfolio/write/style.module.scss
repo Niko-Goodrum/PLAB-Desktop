@@ -25,6 +25,7 @@
 .project {
   @include flex-column;
   gap: 20px;
+  overflow-y: auto;
 
   .project_title {
     @include HeadLine1-Bold;
