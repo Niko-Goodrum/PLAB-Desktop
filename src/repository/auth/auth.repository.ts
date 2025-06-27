@@ -3,7 +3,7 @@ import { Response } from "@/types/util/response";
 import { SigninResponse, RefreshResponse } from "@/types/auth/auth.type";
 import { SignupParams, SigninParams, RefreshParams } from "./auth.param";
 
-const SERVER_URL = import.meta.env.Plab_Server;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 class AuthRepository {
   public async postSignup(params: SignupParams): Promise<Response> {
